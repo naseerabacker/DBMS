@@ -1,0 +1,304 @@
+
+
+
+sudo mysql -u root -p
+use naseera;
+Database changed
+
+
+create table customer(cid int primary key,name varchar(15),age int);
+
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| cid   | int(11)     | NO   | PRI | NULL    |       |
+| name  | varchar(15) | YES  |     | NULL    |       |
+| age   | int(11)     | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+
+ create table orders(oid int primary key, product varchar(10),cid int(11), constraint c1 foreign key(cid) references customer(cid));
+
+
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| oid     | int(11)     | NO   | PRI | NULL    |       |
+| product | varchar(10) | YES  |     | NULL    |       |
+| cid     | int(11)     | YES  | MUL | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+create table student1(roll  int primary key,name varchar(15),age int);
+
+
+
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| roll  | int(11)     | NO   | PRI | NULL    |       |
+| sname | bigint(20)  | YES  |     | NULL    |       |
+| age   | int(11)     | YES  |     | NULL    |       |
+| lname | varchar(10) | NO   | MUL | NULL    |       |
+| fname | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+
+
+
+create table mark(roll int,m1 int,m2 int,grade varchar(10),constraint r1 foreign key(roll) references student1(roll));
+
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| roll  | int(11)     | YES  | MUL | NULL    |       |
+| m1    | int(11)     | YES  |     | NULL    |       |
+| m2    | int(11)     | YES  |     | NULL    |       |
+| grade | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+
+create table employee(empid int primary key,name varchar(20),salary int);
+
+
+
+create table qualification(empid int,quali_1 varchar(20),quali_2 varchar(20),quali_3 varchar(20),constraint e1 foreign key(empid) references employee(empid));
+ +--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| empid  | int(11)     | NO   | PRI | NULL    |       |
+| name   | varchar(20) | YES  |     | NULL    |       |
+| salary | int(11)     | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+
+
+
+ 
+
+mysql> alter table student1 drop age;
+    
+Query OK, 0 rows affected (0.30 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table student1 add age int first;
+Query OK, 0 rows affected (0.31 sec)
+
+
+
+
+mysql> alter table student1 add age int after name;
+ERROR 1060 (42S21): Duplicate column name 'age'
+mysql> 
+mysql> 
+
+mysql> alter table student1
+    -> 
+    -> 
+
+
+
+
+
+
+
+
+
+
+
+ alter table student1 modify age int not null default1;
+
+
+
+
+
+
+
+
+
+mysql> alter table student1 drop age;
+Query OK, 0 rows affected (0.32 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table student1 add age int;
+Query OK, 0 rows affected (0.32 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student1;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| roll  | int(11)     | NO   | PRI | NULL    |       |
+| name  | varchar(15) | YES  |     | NULL    |       |
+| age   | int(11)     | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table student1 drop age;
+Query OK, 0 rows affected (0.31 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table student1 add age int first;
+Query OK, 0 rows affected (0.32 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student1;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| age   | int(11)     | YES  |     | NULL    |       |
+| roll  | int(11)     | NO   | PRI | NULL    |       |
+| name  | varchar(15) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table student1 drop age;
+Query OK, 0 rows affected (0.32 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table student1 add age int after name;
+Query OK, 0 rows affected (0.41 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student1;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| roll  | int(11)     | NO   | PRI | NULL    |       |
+| name  | varchar(15) | YES  |     | NULL    |       |
+| age   | int(11)     | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+alter table student1 modify age int not null default 1;
+Query OK, 0 rows affected (0.32 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student1;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| roll  | int(11)     | NO   | PRI | NULL    |       |
+| name  | varchar(15) | YES  |     | NULL    |       |
+| age   | int(11)     | NO   |     | 1       |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+alter table student1 change name sname bigint;
+Query OK, 0 rows affected (0.44 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+ desc student1;
++-------+------------+------+-----+---------+-------+
+| Field | Type       | Null | Key | Default | Extra |
++-------+------------+------+-----+---------+-------+
+| roll  | int(11)    | NO   | PRI | NULL    |       |
+| sname | bigint(20) | YES  |     | NULL    |       |
+| age   | int(11)    | NO   |     | 1       |       |
++-------+------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+mysql> alter table student1 rename to teacher;
+Query OK, 0 rows affected (0.09 sec)
+
+
+mysql> desc teacher;
++-------+------------+------+-----+---------+-------+
+| Field | Type       | Null | Key | Default | Extra |
++-------+------------+------+-----+---------+-------+
+| roll  | int(11)    | NO   | PRI | NULL    |       |
+| sname | bigint(20) | YES  |     | NULL    |       |
+| age   | int(11)    | NO   |     | 1       |       |
++-------+------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> alter table teacher rename to student1;
+Query OK, 0 rows affected (0.09 sec)
+
+
+mysql> alter table student1 add lname varchar(10) not null,add fname varchar(10)null after lname;
+Query OK, 0 rows affected (0.31 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student1;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| roll  | int(11)     | NO   | PRI | NULL    |       |
+| sname | bigint(20)  | YES  |     | NULL    |       |
+| age   | int(11)     | NO   |     | 1       |       |
+| lname | varchar(10) | NO   |     | NULL    |       |
+| fname | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+
+m alter table student1 add constraint c1 unique(lname,fname);            
+  Query OK, 0 rows affected (0.16 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student1;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| roll  | int(11)     | NO   | PRI | NULL    |       |
+| sname | bigint(20)  | YES  |     | NULL    |       |
+| age   | int(11)     | NO   |     | 1       |       |
+| lname | varchar(10) | NO   | MUL | NULL    |       |
+| fname | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+
+
+ alter table student1 add constraint l1 unique(lname,fname);
+Query OK, 0 rows affected, 1 warning (0.16 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+
+
+
+ alter table student1 drop index c1;
+Query OK, 0 rows affected (0.11 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+
+
+create temporary table students(stname varchar(40) not null,tmarks decimal(12,2)not null default 0.00,totsubjects int);
+Query OK, 0 rows affected (0.00 sec)
+
+
+
+alter table student1 modify age int null;
+Query OK, 0 rows affected (0.33 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+
+
+
+alter table qualification drop foreign key e1;
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+
+
+
+ create table if not exists deer select*from orders;
+Query OK, 0 rows affected (0.20 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc deer;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| oid     | int(11)     | NO   |     | NULL    |       |
+| product | varchar(10) | YES  |     | NULL    |       |
+| cid     | int(11)     | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
