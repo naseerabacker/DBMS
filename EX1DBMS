@@ -1,0 +1,137 @@
+
+create table EMPLOYEE(empid int ,name varchar(20),dob int,adhar_no int);
+Query OK, 0 rows affected (0.17 sec)
+------------------------------------------------------------------------------
+DESC EMPLOYEE;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| empid    | int(11)     | YES  |     | NULL    |       |
+| name     | varchar(20) | YES  |     | NULL    |       |
+| dob      | int(11)     | YES  |     | NULL    |       |
+| adhar_no | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+
+------------------------------------------------------------------
+create table student(roll  int primary key,name varchar(15) not null,age int not null,address varchar(100),gender varchar(10) default'm' check(0-99));
+
+Query OK, 0 rows affected (0.18 sec)
+----------------------------------------------------------------------------
+desc student;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| roll    | int(11)      | NO   | PRI | NULL    |       |
+| name    | varchar(15)  | NO   |     | NULL    |       |
+| age     | int(11)      | NO   |     | NULL    |       |
+| address | varchar(100) | YES  |     | NULL    |       |
+| gender  | varchar(10)  | YES  |     | m       |       |
++---------+--------------+------+-----+---------+-------+
+
+
+--------------------------------------------------------------------------
+create temporary table student1 select *from student;
+Query OK, 0 rows affected (0.00 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+---------------------------------------------------------------------
+desc student1;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| roll    | int(11)      | NO   |     | NULL    |       |
+| name    | varchar(15)  | NO   |     | NULL    |       |
+| age     | int(11)      | NO   |     | NULL    |       |
+| address | varchar(100) | YES  |     | NULL    |       |
+| gender  | varchar(10)  | YES  |     | m       |       |
++---------+--------------+------+-----+---------+-------+
+
+----------------------------------------------------------------------
+create table if not exists empoo select*from employee;
+Query OK, 0 rows affected (0.25 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+desc empoo;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| empid  | int(11)     | NO   |     | NULL    |       |
+| name   | varchar(20) | YES  |     | NULL    |       |
+| salary | int(11)     | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+
+-------------------------------------------------------------------
+create database invoice;
+Query OK, 1 row affected (0.00 sec)
+
+
+use invoice;
+-------------------------------------------------------
+create table customer(id int ,name varchar(20),address varchar(50),city varchar(20),ph_no int);
+Query OK, 0 rows affected (0.24 sec)
+
+
+ desc customer;
+
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| id      | int(11)     | YES  |     | NULL    |       |
+| name    | varchar(20) | YES  |     | NULL    |       |
+| address | varchar(50) | YES  |     | NULL    |       |
+| city    | varchar(20) | YES  |     | NULL    |       |
+| ph_no   | int(11)     | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+
+
+create table product(pid int,pname varchar(50),price int default'0');
+Query OK, 0 rows affected (0.19 sec)
+
+mysql> desc product;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| pid   | int(11)     | YES  |     | NULL    |       |
+| pname | varchar(50) | YES  |     | NULL    |       |
+| price | int(11)     | YES  |     | 0       |       |
++-------+-------------+------+-----+---------+-------+
+
+
+alter table product modify pid int primary key;
+Query OK, 0 rows affected (0.32 sec)
+alter table customer modify id int primary key;
+uery OK, 0 rows affected (0.31 sec)
+
+
+
+create table invoice_master(inv_id int primary key,cust_id int,inv_date date,foreign key(cust_id) references customer(id));
+Query OK, 0 rows affected (0.26 sec)
+
+
+desc invoice_master;
++----------+---------+------+-----+---------+-------+
+| Field    | Type    | Null | Key | Default | Extra |
++----------+---------+------+-----+---------+-------+
+| inv_id   | int(11) | NO   | PRI | NULL    |       |
+| cust_id  | int(11) | YES  | MUL | NULL    |       |
+| inv_date | date    | YES  |     | NULL    |       |
++----------+---------+------+-----+---------+-------+
+
+
+
+create table invoice_item(inv_id int,pid int ,quantitiy int,
+foreign key(inv_id) references invoice_master(inv_id),foreign key(pid) references product(pid));
+
+alter table product modify pid int primary key;
+Query OK, 0 rows affected (0.24 sec)
+
+desc invoice_item;
++-----------+---------+------+-----+---------+-------+
+| Field     | Type    | Null | Key | Default | Extra |
++-----------+---------+------+-----+---------+-------+
+| inv_id    | int(11) | YES  | MUL | NULL    |       |
+| pid       | int(11) | YES  | MUL | NULL    |       |
+| quantitiy | int(11) | YES  |     | NULL    |       |
++-----------+---------+------+-----+---------+-------+
+
+
