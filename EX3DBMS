@@ -17,6 +17,12 @@ Insert values in EMPLOYEE table
 
 mysql> INSERT INTO EMPLOYEE VALUES(10,'JOHN',1990,5656);
 Query OK, 1 row affected (0.04 sec)
+
++------+------+-----+---------+
+| SSN  | name | dob | adhar_no|
++------+------+-----+---------+
+|  10  | JOHN | 1990| 5656    |
++------+------+-----+---------+
 _____________________________Q2____________________________________________
 
 
@@ -24,20 +30,9 @@ Insert values in STUDENT table
 
 insert into student(roll,name,age,address,gender)VALUES(1,'aabb',20,'cdd','m');
 Query OK, 1 row affected (0.03 sec)
-
---------------------------------------------------------------------
-
-mysql> select *from student;
-+------+------+-----+---------+--------+
-| roll | name | age | address | gender |
-+------+------+-----+---------+--------+
-|    1 | aabb |  20 | cdd     | m      |
-+------+------+-----+---------+--------+
-1 row in set (0.00 sec)
------------------------------------------------------------------------------
-mysql> insert into student VALUES(2,'SJJS',33,'sghds','m');
+insert into student VALUES(2,'SJJS',33,'sghds','m');
 Query OK, 1 row affected (0.02 sec)
------------------------------------------------------------------------------
+
 mysql> SELECT *FROM student;
 +------+------+-----+---------+--------+
 | roll | name | age | address | gender |
