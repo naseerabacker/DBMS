@@ -1,0 +1,154 @@
+
+ desc EMPLOYEE;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| empid    | int(11)     | YES  |     | NULL    |       |
+| name     | varchar(20) | YES  |     | NULL    |       |
+| dob      | int(11)     | YES  |     | NULL    |       |
+| adhar_no | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+______________________________Q1________________________________________________
+Add a column ‘SSN’ at the first position in the table EMPLOYEE
+
+mysql> alter table EMPLOYEE add SSN int first;
+Query OK, 0 rows affected (0.31 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc EMPLOYEE;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| SSN      | int(11)     | YES  |     | NULL    |       |
+| empid    | int(11)     | YES  |     | NULL    |       |
+| name     | varchar(20) | YES  |     | NULL    |       |
+| dob      | int(11)     | YES  |     | NULL    |       |
+| adhar_no | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+________________________________Q2________________________________________________
+Change the data type of the column ‘DOB’  in year the table EMPLOYEE    
+
+mysql> alter table EMPLOYEE modify dob year;
+Query OK, 0 rows affected (0.43 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc EMPLOYEE;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| SSN      | int(11)     | YES  |     | NULL    |       |
+| empid    | int(11)     | YES  |     | NULL    |       |
+| name     | varchar(20) | YES  |     | NULL    |       |
+| dob      | year(4)     | YES  |     | NULL    |       |
+| adhar_no | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+___________________________Q3________________________________________________
+Delete the column ‘emp_id’ the table EMPLOYEE.
+
+mysql> alter table EMPLOYEE DROP empid;
+Query OK, 0 rows affected (0.44 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc EMPLOYEE;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| SSN      | int(11)     | YES  |     | NULL    |       |
+| name     | varchar(20) | YES  |     | NULL    |       |
+| dob      | year(4)     | YES  |     | NULL    |       |
+| adhar_no | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+__________________________Q4_______________________________________________
+Add  the constraint unique for columns ‘SSN, ‘adhar_no’ the table EMPLOYEE
+
+mysql> alter table EMPLOYEE add constraint C1 unique(SSN,adhar_no);
+Query OK, 0 rows affected (0.16 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC EMPLOYEE;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| SSN      | int(11)     | YES  | MUL | NULL    |       |
+| name     | varchar(20) | YES  |     | NULL    |       |
+| dob      | year(4)     | YES  |     | NULL    |       |
+| adhar_no | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+____________________Q5_____________________________________
+Delete the NULL constraint of ‘age’ in the STUDENT table.
+
+alter table student modify age int null;
+Query OK, 0 rows affected (0.43 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC EMPLOYEE;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| SSN      | int(11)     | YES  | MUL | NULL    |       |
+| name     | varchar(20) | YES  |     | NULL    |       |
+| dob      | year(4)     | YES  |     | NULL    |       |
+| adhar_no | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+----mysql> drop table empoo;
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> desc empoo;
+ERROR 1146 (42S02): Table 'naseera.empoo' doesn't exist
+mysql> 
+
+4 rows in set (0.00 sec)
+
+___________________________Q6___________________________________________________
+Change the table name EMPLOYEE as PERSON
+
+alter table EMPLOYEE rename to person;
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> desc person;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| SSN      | int(11)     | YES  |     | NULL    |       |
+| name     | varchar(20) | YES  |     | NULL    |       |
+| dob      | year(4)     | YES  |     | NULL    |       |
+| adhar_no | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> desc EMPLOYEE;
+ERROR 1146 (42S02): Table 'naseera.EMPLOYEE' doesn't exist
+mysql> 
+
+mysql> DESC student;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| roll    | int(11)      | NO   | PRI | NULL    |       |
+| name    | varchar(15)  | NO   |     | NULL    |       |
+| age     | int(11)      | YES  |     | NULL    |       |
+| address | varchar(100) | YES  |     | NULL    |       |
+| gender  | varchar(10)  | YES  |     | m       |       |
++---------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+__________________________Q7________________________________________________
+Delete the duplicate table
+
+mysql> drop table empoo;
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> desc empoo;
+ERROR 1146 (42S02): Table 'naseera.empoo' doesn't exist
+mysql> 
+
+
+
+
+
+
