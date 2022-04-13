@@ -1,0 +1,134 @@
+
+DML COMMANDS-INSERT Insert
+
+_______________________________________________________________________________
+DESC EMPLOYEE;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| SSN      | int(11)     | YES  |     | NULL    |       |
+| name     | varchar(20) | YES  |     | NULL    |       |
+| dob      | year(4)     | YES  |     | NULL    |       |
+| adhar_no | int(11)     | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+_____________________________Q1______________________________________________
+Insert values in EMPLOYEE table
+
+mysql> INSERT INTO EMPLOYEE VALUES(10,'JOHN',1990,5656);
+Query OK, 1 row affected (0.04 sec)
+_____________________________Q2____________________________________________
+
+
+Insert values in STUDENT table
+
+insert into student(roll,name,age,address,gender)VALUES(1,'aabb',20,'cdd','m');
+Query OK, 1 row affected (0.03 sec)
+
+--------------------------------------------------------------------
+
+mysql> select *from student;
++------+------+-----+---------+--------+
+| roll | name | age | address | gender |
++------+------+-----+---------+--------+
+|    1 | aabb |  20 | cdd     | m      |
++------+------+-----+---------+--------+
+1 row in set (0.00 sec)
+-----------------------------------------------------------------------------
+mysql> insert into student VALUES(2,'SJJS',33,'sghds','m');
+Query OK, 1 row affected (0.02 sec)
+-----------------------------------------------------------------------------
+mysql> SELECT *FROM student;
++------+------+-----+---------+--------+
+| roll | name | age | address | gender |
++------+------+-----+---------+--------+
+|    1 | aabb |  20 | cdd     | m      |
+|    2 | SJJS |  33 | sghds   | m      |
++------+------+-----+---------+--------+
+2 rows in set (0.00 sec)
+
+
+_________________Q3________________________________________________________
+Insert values in INVOICE database
+
+INSERT INTO customer(id,name,address,city,ph_no)VALUES(1,'APPU','gsdfgd','EK',986767);
+INSERT INTO customer(id,name,address,city,ph_no)VALUES(2,'JOHN','weefgd','kannur',685767);
+INSERT INTO customer(id,name,address,city,ph_no)VALUES(3,'ANNT','sdggfh','calicut',999767);
+INSERT INTO customer(id,name,address,city,ph_no)VALUES(4,'ARNN','GSDFF','EK',);
+
+-----------------------------------------------------------------------------------
+select*from customer;
++----+------+---------+---------+--------+
+| id | name | address | city    | ph_no  |
++----+------+---------+---------+--------+
+|  1 | APPU | gsdfgd  | EK      | 986767 |
+|  2 | JOHN | weefgd  | kannur  | 685767 |
+|  3 | ANNT | sdggfh  | calicut | 999767 |
+|  4 | ARNN | GSDFF   | kollam  |   NULL |
++----+------+---------+---------+--------+
+4 rows in set (0.00 sec)
+
+____________________________________________________________________________________
+INSERT INTO product(pid,pname,price)VALUES(11,mango,110);
+INSERT INTO product(pid,pname,price)VALUES(12,mat,20);
+INSERT INTO product(pid,pname,price)VALUES(13,tomato,30);
+INSERT INTO product(pid,pname,price)VALUES(14,apple,40);
+------------------------------------------------------------------
+
+select*from product;
++-----+--------+-------+
+| pid | pname  | price |
++-----+--------+-------+
+|  11 | mango  |   110 |
+|  12 | mat    |    20 |
+|  13 | tomato |    30 |
+|  14 | apple  |    40 |
++-----+--------+-------+
+4 rows in set (0.00 sec)
+
+
+____________________________________________________________________________
+INSERT INTO invoice_master(inv_id,cust_id,inv_date)VALUES(1,2,4/4/2001);
+INSERT INTO invoice_master(inv_id,cust_id,inv_date)VALUES(10,1,5/3/2001);
+INSERT INTO invoice_master(inv_id,cust_id,inv_date)VALUES(11,2,4/2/2000);
+INSERT INTO invoice_master(inv_id,cust_id,inv_date)VALUES(001,2,8/9/2020);
+
+-------------------------------------------------------------------------
+select*from invoice_master;
++--------+---------+------------+
+| inv_id | cust_id | inv_date   |
++--------+---------+------------+
+|      1 |       2 | 2001-04-04 |
+|     10 |       1 | 2001-03-05 |
+|     11 |       3 | 2000-02-04 |
+|    111 |       4 | 2020-09-08 |
++--------+---------+------------+
+4 rows in set (0.00 sec)
+
+____________________________________________________________________________________
+
+INSERT INTO invoice_item(inv_id,pid,quantitiy)VALUES(001,11,5);
+INSERT INTO invoice_item(inv_id,pid,quantitiy)VALUES(001,14,10);
+INSERT INTO invoice_item(inv_id,pid,quantitiy)VALUES(011,14,5);
+INSERT INTO invoice_item(inv_id,pid,quantitiy)VALUES(010,13,2);
+-----------------------------------------------------------------------
+
+select*from invoice_item;
++--------+------+-----------+
+| inv_id | pid  | quantitiy |
++--------+------+-----------+
+|      1 |   11 |         5 |
+|      1 |   14 |        10 |
+|     11 |   14 |         5 |
+|     10 |   13 |         2 |
++--------+------+-----------+
+4 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
