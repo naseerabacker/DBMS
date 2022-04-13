@@ -95,14 +95,7 @@ desc EMPLOYEE;
 | name     | varchar(20) | YES  |     | NULL    |       |
 | dob      | year(4)     | YES  |     | NULL    |       |
 | adhar_no | int(11)     | YES  |     | NULL    |       |
-+----------+-------------+------+-----+----mysql> drop table empoo;
-Query OK, 0 rows affected (0.11 sec)
-
-desc empoo;
-ERROR 1146 (42S02): Table 'naseera.empoo' doesn't exist
- 
-
-4 rows in set (0.00 sec)
++----------+-------------+------+-----+-----------------+
 
 ___________________________Q6___________________________________________________
 Change the table name EMPLOYEE as PERSON
