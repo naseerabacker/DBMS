@@ -1,5 +1,5 @@
 
- desc EMPLOYEE;
+desc EMPLOYEE;
 +----------+-------------+------+-----+---------+-------+
 | Field    | Type        | Null | Key | Default | Extra |
 +----------+-------------+------+-----+---------+-------+
@@ -12,11 +12,11 @@
 ______________________________Q1________________________________________________
 Add a column ‘SSN’ at the first position in the table EMPLOYEE
 
-mysql> alter table EMPLOYEE add SSN int first;
+alter table EMPLOYEE add SSN int first;
 Query OK, 0 rows affected (0.31 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
-mysql> desc EMPLOYEE;
+desc EMPLOYEE;
 +----------+-------------+------+-----+---------+-------+
 | Field    | Type        | Null | Key | Default | Extra |
 +----------+-------------+------+-----+---------+-------+
@@ -30,11 +30,11 @@ mysql> desc EMPLOYEE;
 ________________________________Q2________________________________________________
 Change the data type of the column ‘DOB’  in year the table EMPLOYEE    
 
-mysql> alter table EMPLOYEE modify dob year;
+alter table EMPLOYEE modify dob year;
 Query OK, 0 rows affected (0.43 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
-mysql> desc EMPLOYEE;
+desc EMPLOYEE;
 +----------+-------------+------+-----+---------+-------+
 | Field    | Type        | Null | Key | Default | Extra |
 +----------+-------------+------+-----+---------+-------+
@@ -48,11 +48,11 @@ mysql> desc EMPLOYEE;
 ___________________________Q3________________________________________________
 Delete the column ‘emp_id’ the table EMPLOYEE.
 
-mysql> alter table EMPLOYEE DROP empid;
+alter table EMPLOYEE DROP empid;
 Query OK, 0 rows affected (0.44 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
-mysql> desc EMPLOYEE;
+desc EMPLOYEE;
 +----------+-------------+------+-----+---------+-------+
 | Field    | Type        | Null | Key | Default | Extra |
 +----------+-------------+------+-----+---------+-------+
@@ -65,11 +65,11 @@ mysql> desc EMPLOYEE;
 __________________________Q4_______________________________________________
 Add  the constraint unique for columns ‘SSN, ‘adhar_no’ the table EMPLOYEE
 
-mysql> alter table EMPLOYEE add constraint C1 unique(SSN,adhar_no);
+alter table EMPLOYEE add constraint C1 unique(SSN,adhar_no);
 Query OK, 0 rows affected (0.16 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
-mysql> DESC EMPLOYEE;
+desc EMPLOYEE;
 +----------+-------------+------+-----+---------+-------+
 | Field    | Type        | Null | Key | Default | Extra |
 +----------+-------------+------+-----+---------+-------+
@@ -87,7 +87,7 @@ alter table student modify age int null;
 Query OK, 0 rows affected (0.43 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
-mysql> DESC EMPLOYEE;
+desc EMPLOYEE;
 +----------+-------------+------+-----+---------+-------+
 | Field    | Type        | Null | Key | Default | Extra |
 +----------+-------------+------+-----+---------+-------+
@@ -98,9 +98,9 @@ mysql> DESC EMPLOYEE;
 +----------+-------------+------+-----+----mysql> drop table empoo;
 Query OK, 0 rows affected (0.11 sec)
 
-mysql> desc empoo;
+desc empoo;
 ERROR 1146 (42S02): Table 'naseera.empoo' doesn't exist
-mysql> 
+ 
 
 4 rows in set (0.00 sec)
 
@@ -110,7 +110,7 @@ Change the table name EMPLOYEE as PERSON
 alter table EMPLOYEE rename to person;
 Query OK, 0 rows affected (0.08 sec)
 
-mysql> desc person;
+desc person;
 +----------+-------------+------+-----+---------+-------+
 | Field    | Type        | Null | Key | Default | Extra |
 +----------+-------------+------+-----+---------+-------+
@@ -121,11 +121,10 @@ mysql> desc person;
 +----------+-------------+------+-----+---------+-------+
 4 rows in set (0.00 sec)
 
-mysql> desc EMPLOYEE;
+desc EMPLOYEE;
 ERROR 1146 (42S02): Table 'naseera.EMPLOYEE' doesn't exist
-mysql> 
 
-mysql> DESC student;
+desc student;
 +---------+--------------+------+-----+---------+-------+
 | Field   | Type         | Null | Key | Default | Extra |
 +---------+--------------+------+-----+---------+-------+
@@ -140,12 +139,12 @@ mysql> DESC student;
 __________________________Q7________________________________________________
 Delete the duplicate table
 
-mysql> drop table empoo;
+drop table empoo;
 Query OK, 0 rows affected (0.11 sec)
 
-mysql> desc empoo;
+desc empoo;
 ERROR 1146 (42S02): Table 'naseera.empoo' doesn't exist
-mysql> 
+ 
 
 
 
