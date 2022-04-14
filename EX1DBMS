@@ -1,4 +1,5 @@
-
+//EXP 1
+//ADD QUESTION
 create table EMPLOYEE(empid int ,name varchar(20),dob int,adhar_no int);
 Query OK, 0 rows affected (0.17 sec)
 ------------------------------------------------------------------------------
@@ -135,3 +136,4 @@ desc invoice_item;
 +-----------+---------+------+-----+---------+-------+
 
 
+//ADD QUESTION
