@@ -1,3 +1,9 @@
+
+EXPERIMENT 1
+		DDL COMMANDS-CREATE
+
+
+
 ____________________Q1_________________________________________________________
 Create a table EMPLOYEE have the following fields (emp_id, name,city,dob,adhar_no)
 
@@ -65,7 +71,6 @@ Create a duplicate table of EMPLOYEE.
 
 mysql>create table if not exists empoo select*from employee;
 Query OK, 0 rows affected (0.25 sec)
-Records: 0  Duplicates: 0  Warnings: 0
 --------------------------------------------------------------
 desc empoo;
 +--------+-------------+------+-----+---------+-------+
@@ -77,8 +82,7 @@ desc empoo;
 +--------+-------------+------+-----+---------+-------+
 
 __________________Q5__________________________________________________________
- Create an INVOICE database and having following tables.
-
+Create an INVOICE database and having following tables.
 
 Customer(id, name, address, city, ph_no)
 
