@@ -1,9 +1,11 @@
-//EXP 1
-//ADD QUESTION
-create table EMPLOYEE(empid int ,name varchar(20),dob int,adhar_no int);
+____________________Q1_________________________________________________________
+Create a table EMPLOYEE have the following fields (emp_id, name,city,dob,adhar_no)
+
+mysql>create table EMPLOYEE(empid int ,name varchar(20),dob int,adhar_no int);
+
 Query OK, 0 rows affected (0.17 sec)
 ------------------------------------------------------------------------------
-DESC EMPLOYEE;
+desc EMPLOYEE;
 +----------+-------------+------+-----+---------+-------+
 | Field    | Type        | Null | Key | Default | Extra |
 +----------+-------------+------+-----+---------+-------+
@@ -13,11 +15,20 @@ DESC EMPLOYEE;
 | adhar_no | int(11)     | YES  |     | NULL    |       |
 +----------+-------------+------+-----+---------+-------+
 
-------------------------------------------------------------------
-create table student(roll  int primary key,name varchar(15) not null,age int not null,address varchar(100),gender varchar(10) default'm' check(0-99));
+_______________________Q2_____________________________________________________
+Create a table student have the fields(roll_no, name, age, address, gender)and add following constraints on it.
+Roll_no – Primary key
 
-Query OK, 0 rows affected (0.18 sec)
+
+Name – does not allow null values
+
+Age- must be in between (0-99), does not allow null values
+
+Gender- default value is ‘m’
 ----------------------------------------------------------------------------
+mysql>create table student(roll  int primary key,name varchar(15) not null,age int not null,address varchar(100),gender varchar(10) default'm' check(0-99));
+---------------------------------------------------------------------------------
+
 desc student;
 +---------+--------------+------+-----+---------+-------+
 | Field   | Type         | Null | Key | Default | Extra |
@@ -29,14 +40,15 @@ desc student;
 | gender  | varchar(10)  | YES  |     | m       |       |
 +---------+--------------+------+-----+---------+-------+
 
+___________________Q3__________________________________________________________
+Create a temporary table STUDENT1 of student relation.
 
---------------------------------------------------------------------------
 create temporary table student1 select *from student;
-Query OK, 0 rows affected (0.00 sec)
-Records: 0  Duplicates: 0  Warnings: 0
+Query OK, 0 rows affected (0.18 sec)
 
----------------------------------------------------------------------
-desc student1;
+
+----------------------------------------------------------------------------
+mysql>desc student1;
 +---------+--------------+------+-----+---------+-------+
 | Field   | Type         | Null | Key | Default | Extra |
 +---------+--------------+------+-----+---------+-------+
@@ -47,11 +59,14 @@ desc student1;
 | gender  | varchar(10)  | YES  |     | m       |       |
 +---------+--------------+------+-----+---------+-------+
 
-----------------------------------------------------------------------
-create table if not exists empoo select*from employee;
+
+_________________Q4___________________________________________________________
+Create a duplicate table of EMPLOYEE.
+
+mysql>create table if not exists empoo select*from employee;
 Query OK, 0 rows affected (0.25 sec)
 Records: 0  Duplicates: 0  Warnings: 0
-
+--------------------------------------------------------------
 desc empoo;
 +--------+-------------+------+-----+---------+-------+
 | Field  | Type        | Null | Key | Default | Extra |
@@ -61,19 +76,29 @@ desc empoo;
 | salary | int(11)     | YES  |     | NULL    |       |
 +--------+-------------+------+-----+---------+-------+
 
--------------------------------------------------------------------
+__________________Q5__________________________________________________________
+ Create an INVOICE database and having following tables.
+
+
+Customer(id, name, address, city, ph_no)
+
+Product(pid,  pname,price (default 0))
+
+Invoice_master(inv_id, cust_id(FK), inv_date)
+
+Invoice_item(inv_id(FK),pid(FK), quantity)
+
+
 create database invoice;
 Query OK, 1 row affected (0.00 sec)
 
-
 use invoice;
--------------------------------------------------------
-create table customer(id int ,name varchar(20),address varchar(50),city varchar(20),ph_no int);
+
+mysql>create table customer(id int ,name varchar(20),address varchar(50),city varchar(20),ph_no int);
 Query OK, 0 rows affected (0.24 sec)
 
-
+--------------------------------------------------------------------------------
  desc customer;
-
 +---------+-------------+------+-----+---------+-------+
 | Field   | Type        | Null | Key | Default | Extra |
 +---------+-------------+------+-----+---------+-------+
@@ -84,11 +109,11 @@ Query OK, 0 rows affected (0.24 sec)
 | ph_no   | int(11)     | YES  |     | NULL    |       |
 +---------+-------------+------+-----+---------+-------+
 
-
-create table product(pid int,pname varchar(50),price int default'0');
+----------------------------------------------------------------------------
+mysql>create table product(pid int,pname varchar(50),price int default'0');
 Query OK, 0 rows affected (0.19 sec)
 
-mysql> desc product;
+desc product;
 +-------+-------------+------+-----+---------+-------+
 | Field | Type        | Null | Key | Default | Extra |
 +-------+-------------+------+-----+---------+-------+
@@ -97,19 +122,18 @@ mysql> desc product;
 | price | int(11)     | YES  |     | 0       |       |
 +-------+-------------+------+-----+---------+-------+
 
-
-alter table product modify pid int primary key;
+------------------------------------------------------------------------------
+mysql>alter table product modify pid int primary key;
 Query OK, 0 rows affected (0.32 sec)
-alter table customer modify id int primary key;
-uery OK, 0 rows affected (0.31 sec)
+mysql>alter table customer modify id int primary key;
+Query OK, 0 rows affected (0.31 sec)
 
+------------------------------------------------------------------------------
 
-
-create table invoice_master(inv_id int primary key,cust_id int,inv_date date,foreign key(cust_id) references customer(id));
+mysql>create table invoice_master(inv_id int primary key,cust_id int,inv_date date,foreign key(cust_id) references customer(id));
 Query OK, 0 rows affected (0.26 sec)
-
-
-desc invoice_master;
+-------------------------------------------------------------------------------
+mysql>desc invoice_master;
 +----------+---------+------+-----+---------+-------+
 | Field    | Type    | Null | Key | Default | Extra |
 +----------+---------+------+-----+---------+-------+
@@ -118,15 +142,14 @@ desc invoice_master;
 | inv_date | date    | YES  |     | NULL    |       |
 +----------+---------+------+-----+---------+-------+
 
-
-
-create table invoice_item(inv_id int,pid int ,quantitiy int,
+------------------------------------------------------------------------------
+mysql>create table invoice_item(inv_id int,pid int ,quantitiy int,
 foreign key(inv_id) references invoice_master(inv_id),foreign key(pid) references product(pid));
-
-alter table product modify pid int primary key;
+-----------------------------------------------------------------------------
+mysql>alter table product modify pid int primary key;
 Query OK, 0 rows affected (0.24 sec)
-
-desc invoice_item;
+-------------------------------------------------------------------------------
+mysql>desc invoice_item;
 +-----------+---------+------+-----+---------+-------+
 | Field     | Type    | Null | Key | Default | Extra |
 +-----------+---------+------+-----+---------+-------+
@@ -136,4 +159,3 @@ desc invoice_item;
 +-----------+---------+------+-----+---------+-------+
 
 
-//ADD QUESTION
