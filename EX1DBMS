@@ -25,14 +25,15 @@ _______________________Q2_____________________________________________________
 Create a table student have the fields(roll_no, name, age, address, gender)and add following constraints on it.
 Roll_no – Primary key
 
-
 Name – does not allow null values
 
 Age- must be in between (0-99), does not allow null values
 
 Gender- default value is ‘m’
-----------------------------------------------------------------------------
+
 mysql>create table student(roll  int primary key,name varchar(15) not null,age int not null,address varchar(100),gender varchar(10) default'm' check(0-99));
+
+Query OK, 0 rows affected (0.17 sec)
 ---------------------------------------------------------------------------------
 
 desc student;
@@ -51,7 +52,6 @@ Create a temporary table STUDENT1 of student relation.
 
 create temporary table student1 select *from student;
 Query OK, 0 rows affected (0.18 sec)
-
 
 ----------------------------------------------------------------------------
 mysql>desc student1;
@@ -72,7 +72,7 @@ Create a duplicate table of EMPLOYEE.
 mysql>create table if not exists empoo select*from employee;
 Query OK, 0 rows affected (0.25 sec)
 --------------------------------------------------------------
-desc empoo;
+mysql>desc empoo;
 +--------+-------------+------+-----+---------+-------+
 | Field  | Type        | Null | Key | Default | Extra |
 +--------+-------------+------+-----+---------+-------+
@@ -102,7 +102,7 @@ mysql>create table customer(id int ,name varchar(20),address varchar(50),city va
 Query OK, 0 rows affected (0.24 sec)
 
 --------------------------------------------------------------------------------
- desc customer;
+mysql> desc customer;
 +---------+-------------+------+-----+---------+-------+
 | Field   | Type        | Null | Key | Default | Extra |
 +---------+-------------+------+-----+---------+-------+
@@ -117,7 +117,7 @@ Query OK, 0 rows affected (0.24 sec)
 mysql>create table product(pid int,pname varchar(50),price int default'0');
 Query OK, 0 rows affected (0.19 sec)
 
-desc product;
+mysql>desc product;
 +-------+-------------+------+-----+---------+-------+
 | Field | Type        | Null | Key | Default | Extra |
 +-------+-------------+------+-----+---------+-------+
