@@ -87,15 +87,18 @@ alter table student modify age int null;
 Query OK, 0 rows affected (0.43 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
-desc EMPLOYEE;
-+----------+-------------+------+-----+---------+-------+
-| Field    | Type        | Null | Key | Default | Extra |
-+----------+-------------+------+-----+---------+-------+
-| SSN      | int(11)     | YES  | MUL | NULL    |       |
-| name     | varchar(20) | YES  |     | NULL    |       |
-| dob      | year(4)     | YES  |     | NULL    |       |
-| adhar_no | int(11)     | YES  |     | NULL    |       |
-+----------+-------------+------+-----+-----------------+
+desc student;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| roll    | int(11)      | NO   | PRI | NULL    |       |
+| name    | varchar(15)  | NO   |     | NULL    |       |
+| age     | int(11)      | YES  |     | NULL    |       |
+| address | varchar(100) | YES  |     | NULL    |       |
+| gender  | varchar(10)  | YES  |     | m       |       |
++---------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
 
 ___________________________Q6___________________________________________________
 Change the table name EMPLOYEE as PERSON
@@ -117,17 +120,7 @@ desc person;
 desc EMPLOYEE;
 ERROR 1146 (42S02): Table 'naseera.EMPLOYEE' doesn't exist
 
-desc student;
-+---------+--------------+------+-----+---------+-------+
-| Field   | Type         | Null | Key | Default | Extra |
-+---------+--------------+------+-----+---------+-------+
-| roll    | int(11)      | NO   | PRI | NULL    |       |
-| name    | varchar(15)  | NO   |     | NULL    |       |
-| age     | int(11)      | YES  |     | NULL    |       |
-| address | varchar(100) | YES  |     | NULL    |       |
-| gender  | varchar(10)  | YES  |     | m       |       |
-+---------+--------------+------+-----+---------+-------+
-5 rows in set (0.00 sec)
+
 
 __________________________Q7________________________________________________
 Delete the duplicate table
@@ -141,6 +134,6 @@ ERROR 1146 (42S02): Table 'naseera.empoo' doesn't exist
 
 
 
-//ADD QUESTION
+
 
 
