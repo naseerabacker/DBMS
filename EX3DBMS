@@ -1,5 +1,7 @@
+EXPERIMENT 3
 
-DML COMMANDS-INSERT Insert
+
+		DML COMMANDS-INSERT 
 
 _______________________________________________________________________________
 DESC EMPLOYEE;
@@ -24,7 +26,6 @@ Query OK, 1 row affected (0.04 sec)
 |  10  | JOHN | 1990| 5656    |
 +------+------+-----+---------+
 _____________________________Q2____________________________________________
-
 
 Insert values in STUDENT table
 
@@ -110,7 +111,7 @@ INSERT INTO invoice_item(inv_id,pid,quantitiy)VALUES(010,13,2);
 
 select*from invoice_item;
 +--------+------+-----------+
-| inv_id | pid  | quantitiy |
+| inv_id | pid  | quantity  |
 +--------+------+-----------+
 |      1 |   11 |         5 |
 |      1 |   14 |        10 |
@@ -125,5 +126,5 @@ select*from invoice_item;
 
 
 
-//ADD QUESTION
+
 
