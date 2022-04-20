@@ -1,0 +1,88 @@
+EXPERIMENT 4
+
+  		 DML COMMANDS- UPDATE
+
+_____________________________________Q1________________________________________
+Update the price of a particular product
+
+mysql> UPDATE product SET price= 40 WHERE pid=13;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> UPDATE product SET price= 40 WHERE pname='apple';
+Query OK, 0 rows affected (0.03 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+mysql> select*from product;
++-----+--------+-------+
+| pid | pname  | price |
++-----+--------+-------+
+|  11 | MANGO  |   110 |
+|  12 | mat    |    20 |
+|  13 | tomato |    40 |
+|  14 | apple  |    40 |
++-----+--------+-------+
+4 rows in set (0.00 sec)
+
+__________________________________________Q2__________________________________________
+Change the name of city ‘calicut’ to ‘kozhikode’ in the customer table
+
+
+mysql> UPDATE customer SET city='kozhikode' WHERE city='calicut';
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from customer;
++----+------+---------+-----------+--------+
+| id | name | address | city      | ph_no  |
++----+------+---------+-----------+--------+
+|  1 | APPU | gsdfgd  | EK        | 986767 |
+|  2 | JOHN | weefgd  | kannur    | 685767 |
+|  3 | ANNT | sdggfh  | kozhikode | 999767 |
+|  4 | ARNN | GSDFF   | kollam    |   NULL |
++----+------+---------+-----------+--------+
+4 rows in set (0.00 sec)
+____________________________Q3________________________________________________________
+Update all prices with 2% of its original price
+
+
+mysql> UPDATE product SET price=price+price*0.2;
+Query OK, 4 rows affected (0.04 sec)
+Rows matched: 4  Changed: 4  Warnings: 0
+
+mysql> select*from product;
++-----+--------+-------+
+| pid | pname  | price |
++-----+--------+-------+
+|  11 | MANGO  |   132 |
+|  12 | mat    |    24 |
+|  13 | tomato |    48 |
+|  14 | apple  |    48 |
++-----+--------+-------+
+4 rows in set (0.00 sec)
+
+___________________________________Q4_________________________________________________
+Change the address, city, phone number of a particular customer
+
+mysql> UPDATE customer SET address='kallanthode',ph_no=988873 WHERE name='JOHN'; 
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+_____________________________________Q5_______________________________________________
+Change the quantity of a purchased product of inv_id ‘1’
+
+mysql> UPDATE invoice_item SET quantitiy=10 WHERE(pid=11 AND inv_id=1);
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from invoice_item;
++--------+------+-----------+
+| inv_id | pid  | quantity  |
++--------+------+-----------+
+|      1 |   11 |        10 |
+|      1 |   14 |        10 |
+|     11 |   14 |         5 |
+|     10 |   13 |         2 |
++--------+------+-----------+
+4 rows in set (0.00 sec)
+
+
