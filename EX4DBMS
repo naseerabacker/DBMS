@@ -45,18 +45,18 @@ ____________________________Q3__________________________________________________
 Update all prices with 2% of its original price
 
 
-mysql> UPDATE product SET price=price+price*0.2;
+mysql> UPDATE product SET price=price+(price*0.02);
 Query OK, 4 rows affected (0.04 sec)
 Rows matched: 4  Changed: 4  Warnings: 0
 
-mysql> select*from product;
+mysql> select *from product;
 +-----+--------+-------+
 | pid | pname  | price |
 +-----+--------+-------+
-|  11 | MANGO  |   132 |
-|  12 | mat    |    24 |
-|  13 | tomato |    48 |
-|  14 | apple  |    48 |
+|  11 | MANGO  |   112 |
+|  12 | mat    |    20 |
+|  13 | tomato |    41 |
+|  14 | apple  |    41 |
 +-----+--------+-------+
 4 rows in set (0.00 sec)
 
@@ -66,6 +66,19 @@ Change the address, city, phone number of a particular customer
 mysql> UPDATE customer SET address='kallanthode',ph_no=988873 WHERE name='JOHN'; 
 Query OK, 1 row affected (0.05 sec)
 Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from customer;
++----+------+-------------+-----------+--------+
+| id | name | address     | city      | ph_no  |
++----+------+-------------+-----------+--------+
+|  1 | APPU | gsdfgd      | EK        | 986767 |
+|  2 | JOHN | kallanthode | kannur    | 988873 |
+|  3 | ANNT | sdggfh      | kozhikode | 999767 |
+|  4 | ARNN | GSDFF       | kollam    |   NULL |
++----+------+-------------+-----------+--------+
+4 rows in set (0.00 sec)
+
+
 
 _____________________________________Q5_______________________________________________
 Change the quantity of a purchased product of inv_id ‘1’
