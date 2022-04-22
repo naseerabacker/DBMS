@@ -3,7 +3,7 @@ EXPERIMENT 4
   		 DML COMMANDS- UPDATE
 
 _____________________________________Q1________________________________________
-Update the price of a particular product
+1. Update the price of a particular product
 
 mysql> UPDATE product SET price= 40 WHERE pid=13;
 Query OK, 1 row affected (0.02 sec)
@@ -24,7 +24,7 @@ mysql> select*from product;
 4 rows in set (0.00 sec)
 
 __________________________________________Q2__________________________________________
-Change the name of city ‘calicut’ to ‘kozhikode’ in the customer table
+2. Change the name of city ‘calicut’ to ‘kozhikode’ in the customer table
 
 
 mysql> UPDATE customer SET city='kozhikode' WHERE city='calicut';
@@ -42,7 +42,7 @@ mysql> select*from customer;
 +----+------+---------+-----------+--------+
 4 rows in set (0.00 sec)
 ____________________________Q3________________________________________________________
-Update all prices with 2% of its original price
+3. Update all prices with 2% of its original price
 
 
 mysql> UPDATE product SET price=price+(price*0.02);
@@ -61,7 +61,7 @@ mysql> select *from product;
 4 rows in set (0.00 sec)
 
 ___________________________________Q4_________________________________________________
-Change the address, city, phone number of a particular customer
+4. Change the address, city, phone number of a particular customer
 
 mysql> UPDATE customer SET address='kallanthode',ph_no=988873 WHERE name='JOHN'; 
 Query OK, 1 row affected (0.05 sec)
@@ -81,7 +81,7 @@ mysql> select *from customer;
 
 
 _____________________________________Q5_______________________________________________
-Change the quantity of a purchased product of inv_id ‘1’
+5. Change the quantity of a purchased product of inv_id ‘1’
 
 mysql> UPDATE invoice_item SET quantitiy=10 WHERE(pid=11 AND inv_id=1);
 Query OK, 1 row affected (0.03 sec)
@@ -99,3 +99,4 @@ mysql> select*from invoice_item;
 4 rows in set (0.00 sec)
 
 
+//VERIFIED
