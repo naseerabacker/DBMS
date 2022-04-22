@@ -162,4 +162,4 @@ mysql>desc invoice_item;
 | quantitiy | int(11) | YES  |     | NULL    |       |
 +-----------+---------+------+-----+---------+-------+
 
-
+//VERIFIED
