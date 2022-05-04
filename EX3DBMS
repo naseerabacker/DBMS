@@ -103,10 +103,10 @@ select*from invoice_master;
 
 ____________________________________________________________________________________
 
-INSERT INTO invoice_item(inv_id,pid,quantitiy)VALUES(001,11,5);
-INSERT INTO invoice_item(inv_id,pid,quantitiy)VALUES(001,14,10);
-INSERT INTO invoice_item(inv_id,pid,quantitiy)VALUES(011,14,5);
-INSERT INTO invoice_item(inv_id,pid,quantitiy)VALUES(010,13,2);
+INSERT INTO invoice_item(inv_id,pid,quantity)VALUES(001,11,5);
+INSERT INTO invoice_item(inv_id,pid,quantity)VALUES(001,14,10);
+INSERT INTO invoice_item(inv_id,pid,quantity)VALUES(011,14,5);
+INSERT INTO invoice_item(inv_id,pid,quantity)VALUES(010,13,2);
 -----------------------------------------------------------------------
 
 select*from invoice_item;
