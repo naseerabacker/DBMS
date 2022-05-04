@@ -1,0 +1,202 @@
+EXPERIMENT 5 
+		
+			DML COMMANDS- DELETE
+
+
+
+
+
+
+
+_________________________________Q1___________________________________________________
+Delete the record of customer id ‘5’
+
+mysql> DELETE FROM customer WHERE id=5;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select *from customer;
++----+------+-------------+-----------+--------+
+| id | name | address     | city      | ph_no  |
++----+------+-------------+-----------+--------+
+|  1 | APPU | gsdfgd      | EK        | 986767 |
+|  2 | JOHN | kallanthode | kannur    | 988873 |
+|  3 | ANNT | sdggfh      | kozhikode | 999767 |
+|  4 | ARNN | GSDFF       | kollam    |   NULL |
++----+------+-------------+-----------+--------+
+4 rows in set (0.00 sec)
+
+
+____________________________________Q2________________________________________________
+
+Delete all purchase details of items its quantity less than 6
+
+mysql> DELETE FROM invoice_item WHERE quantity<6;
+Query OK, 2 rows affected (0.07 sec)
+
+mysql> select *from invoice_item;
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|      1 |   11 |       10 |
+|      1 |   14 |       10 |
++--------+------+----------+
+2 rows in set (0.00 sec)
+
+_____________________________________Q3______________________________________________
+Delete the purchase details of product ‘mango’ in the inv_id ‘1’
+
+mysql> delete from invoice_item where pid=11 and inv_id=1;
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select *from invoice_item;
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|      1 |   14 |       10 |
++--------+------+----------+
+1 row in set (0.00 sec)
+
+
+_______________________________Q4____________________________________________________
+Delete details of employees who does not have phone number
+
+mysql> delete from invoice_master where inv_id=111;
+Query OK, 1 row affected (0.04 sec)
+
+mysql> delete from customer where ph_no is null;
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select*from customer;
++----+------+-------------+-----------+--------+
+| id | name | address     | city      | ph_no  |
++----+------+-------------+-----------+--------+
+|  1 | APPU | gsdfgd      | EK        | 986767 |
+|  2 | JOHN | kallanthode | kannur    | 988873 |
+|  3 | ANNT | sdggfh      | kozhikode | 999767 |
++----+------+-------------+-----------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select*from invoice_item;
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|      1 |   14 |       10 |
++--------+------+----------+
+1 row in set (0.00 sec)
+
+mysql> select*from invoice_master;
++--------+---------+------------+
+| inv_id | cust_id | inv_date   |
++--------+---------+------------+
+|      1 |       2 | 2001-04-04 |
+|     10 |       1 | 2001-03-05 |
+|     11 |       3 | 2000-02-04 |
++--------+---------+------------+
+3 rows in set (0.00 sec)
+
+
+
+
+
+_________________________________Q5___________________________
+Delete all records from STUDENT table
+
+mysql> delete from invoice_master where inv_id=111;
+Query OK, 1 row affected (0.04 sec)
+
+mysql> delete from customer where ph_no is null;
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select*from customer;
++----+------+-------------+-----------+--------+
+| id | name | address     | city      | ph_no  |
++----+------+-------------+-----------+--------+
+|  1 | APPU | gsdfgd      | EK        | 986767 |
+|  2 | JOHN | kallanthode | kannur    | 988873 |
+|  3 | ANNT | sdggfh      | kozhikode | 999767 |
++----+------+-------------+-----------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select*from invoice_item;
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|      1 |   14 |       10 |
++--------+------+----------+
+1 row in set (0.00 sec)
+
+mysql> select*from invoice_master;
++--------+---------+------------+
+| inv_id | cust_id | inv_date   |
++--------+---------+------------+
+|      1 |       2 | 2001-04-04 |
+|     10 |       1 | 2001-03-05 |
+|     11 |       3 | 2000-02-04 |
++--------+---------+------------+
+3 rows in set (0.00 sec)
+
+
+____________________________________Q6____________________________________ 
+
+Delete Invoice details of a particular customer
+
+
+mysql> DELETE FROM invoice_item WHERE inv_id=1;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> DELETE FROM invoice_master WHERE inv_id=1;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select*from invoice_master;
++--------+---------+------------+
+| inv_id | cust_id | inv_date   |
++--------+---------+------------+
+|     10 |       1 | 2001-03-05 |
+|     11 |       3 | 2000-02-04 |
++--------+---------+------------+
+2 rows in set (0.00 sec)
+
+_____________________________Q7___________________________________________
+
+Delete the first two records of 'invoice_item' table its purchase quantity is 
+high
+
+
+
+
+mysql> INSERT INTO invoice_item(inv_id,pid,quantity)VALUES(011,14,5);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO invoice_item(inv_id,pid,quantity)VALUES(011,13,2);
+Query OK, 1 row affected (0.14 sec)
+
+mysql> INSERT INTO invoice_item(inv_id,pid,quantity)VALUES(010,11,5);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> INSERT INTO invoice_item(inv_id,pid,quantity)VALUES(010,11,5);
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO invoice_master(inv_id,cust_id,inv_date)VALUES(1,2,'2001-4-4');
+Query OK, 1 row affected (0.05 sec)
+
+
+mysql> INSERT INTO invoice_master(inv_id,cust_id,inv_date)VALUES(11,3,'2000-02-04');
+Query OK, 1 row affected (0.03 sec)
+
+ invoice_master(inv_id,cust_id,inv_date)VALUES(12,3,'2020-02-04');
+Query OK, 1 row affected (0.04 sec)
+
+ 
+mysql> select*from invoice_master;
++--------+---------+------------+
+| inv_id | cust_id | inv_date   |
++--------+---------+------------+
+|      1 |       2 | 2001-04-04 |
+|     10 |       1 | 2001-03-05 |
+|     11 |       3 | 2000-02-04 |
+|     12 |       3 | 2020-02-04 |
++--------+---------+------------+
+4 rows in set (0.00 sec)
+
+
+
