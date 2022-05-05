@@ -48,9 +48,17 @@ _________________Q3________________________________________________________
 Insert values in INVOICE database
 
 INSERT INTO customer(id,name,address,city,ph_no)VALUES(1,'APPU','gsdfgd','EK',986767);
+Query OK, 1 row affected (0.04 sec)
+
 INSERT INTO customer(id,name,address,city,ph_no)VALUES(2,'JOHN','weefgd','kannur',685767);
+Query OK, 1 row affected (0.04 sec)
+
 INSERT INTO customer(id,name,address,city,ph_no)VALUES(3,'ANNT','sdggfh','calicut',999767);
-INSERT INTO customer(id,name,address,city,ph_no)VALUES(4,'ARNN','GSDFF','EK',);
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO customer(id,name,address,city)VALUES(4,'ARNN','GSDFF','EKM');
+Query OK, 1 row affected (0.04 sec)
+
 
 -----------------------------------------------------------------------------------
 select*from customer;
@@ -66,9 +74,17 @@ select*from customer;
 
 ____________________________________________________________________________________
 INSERT INTO product(pid,pname,price)VALUES(11,mango,110);
+Query OK, 1 row affected (0.04 sec)
+
 INSERT INTO product(pid,pname,price)VALUES(12,mat,20);
+Query OK, 1 row affected (0.04 sec)
+
 INSERT INTO product(pid,pname,price)VALUES(13,tomato,30);
+Query OK, 1 row affected (0.04 sec)
+
 INSERT INTO product(pid,pname,price)VALUES(14,apple,40);
+Query OK, 1 row affected (0.04 sec)
+
 ------------------------------------------------------------------
 
 select*from product;
@@ -84,12 +100,20 @@ select*from product;
 
 
 ____________________________________________________________________________
-INSERT INTO invoice_master(inv_id,cust_id,inv_date)VALUES(1,2,4/4/2001);
-INSERT INTO invoice_master(inv_id,cust_id,inv_date)VALUES(10,1,5/3/2001);
-INSERT INTO invoice_master(inv_id,cust_id,inv_date)VALUES(11,2,4/2/2000);
-INSERT INTO invoice_master(inv_id,cust_id,inv_date)VALUES(001,2,8/9/2020);
+INSERT INTO invoice_master(inv_id,cust_id,inv_date)VALUES(1,2,'2001-4-4');
+Query OK, 1 row affected (0.04 sec)
 
--------------------------------------------------------------------------
+INSERT INTO invoice_master(inv_id,cust_id,inv_date)VALUES(10,1,'2001-03-05');
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO invoice_master(inv_id,cust_id,inv_date)VALUES(11,3,'2000-02-04');
+Query OK, 1 row affected (0.04 sec)
+
+INSERT INTO invoice_master(inv_id,cust_id,inv_date)VALUES(001,4,'2020-09-08');
+Query OK, 1 row affected (0.04 sec)
+
+-----------------------------------------------------------------------
+--
 select*from invoice_master;
 +--------+---------+------------+
 | inv_id | cust_id | inv_date   |
@@ -104,9 +128,17 @@ select*from invoice_master;
 ____________________________________________________________________________________
 
 INSERT INTO invoice_item(inv_id,pid,quantity)VALUES(001,11,5);
+Query OK, 1 row affected (0.04 sec)
+
 INSERT INTO invoice_item(inv_id,pid,quantity)VALUES(001,14,10);
+Query OK, 1 row affected (0.04 sec)
+
 INSERT INTO invoice_item(inv_id,pid,quantity)VALUES(011,14,5);
+Query OK, 1 row affected (0.04 sec)
+
 INSERT INTO invoice_item(inv_id,pid,quantity)VALUES(010,13,2);
+Query OK, 1 row affected (0.04 sec)
+
 -----------------------------------------------------------------------
 
 select*from invoice_item;
@@ -121,7 +153,7 @@ select*from invoice_item;
 4 rows in set (0.00 sec)
 
 
-//VERIFIED
+
 
 
 
