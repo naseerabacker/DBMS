@@ -1,0 +1,228 @@
+EXPERIMENT 6
+
+  		 DML COMMANDS- SELECT
+
+
+_________________________Q1______________________________________________________
+
+List all customer details
+
+
+mysql> select*from customer;                                                    +----+------+-------------+-----------+--------+
+| id | name | address     | city      | ph_no  |
++----+------+-------------+-----------+--------+
+|  1 | APPU | gsdfgd      | EK        | 986767 |
+|  2 | JOHN | kallanthode | kannur    | 988873 |
+|  3 | ANNT | sdggfh      | kozhikode | 999767 |
+|  4 | ARNN | GSDFF       | EKM       |   NULL |
++----+------+-------------+-----------+--------+
+4 rows in set (0.00 sec)
+
+
+
+______________________Q2__________________________________________________      
+
+List pname, price of all products.
+
+mysql> SELECT pname,price from product;
++--------+-------+
+| pname  | price |
++--------+-------+
+| MANGO  |   112 |
+| mat    |    20 |
+| tomato |    41 |
+| apple  |    41 |
++--------+-------+
+4 rows in set (0.00 sec)
+
+
+______________________________Q3______________________________________________
+
+List all invoice items, avoid duplicates.
+
+mysql> select distinct inv_id from invoice_item;
++--------+
+| inv_id |
++--------+
+|      1 |
+|     10 |
+|     11 |
++--------+
+3 rows in set (0.00 sec)
+
+
+________________________________Q4_____________________________________________      
+List product price between 50rs and 150rs
+
+mysql> select *from product where price between 50 and 150;
++-----+-------+-------+
+| pid | pname | price |
++-----+-------+-------+
+|  11 | MANGO |   112 |
++-----+-------+-------+
+1 row in set (0.00 sec)
+
+
+_____________________________Q5______________________________________________      
+List the customer details who lives in ‘EKM’,’kannur’
+mysql> select *from customer where city='EKM' or city= 'kannur';
++----+------+-------------+--------+--------+
+| id | name | address     | city   | ph_no  |
++----+------+-------------+--------+--------+
+|  2 | JOHN | kallanthode | kannur | 988873 |
+|  4 | ARNN | GSDFF       | EKM    |   NULL |
++----+------+-------------+--------+--------+
+2 rows in set (0.00 sec)
+
+
+
+____________________________Q6___________________________________________________      
+List the invoice details from between '2001-03-05' and '2020-02-04'
+
+
+mysql> select * from invoice_master where inv_date between '2001-03-05' and '2020-02-04';
++--------+---------+------------+
+| inv_id | cust_id | inv_date   |
++--------+---------+------------+
+|      1 |       2 | 2001-04-04 |
+|     10 |       1 | 2001-03-05 |
+|     12 |       3 | 2020-02-04 |
+|     13 |       2 | 2001-04-04 |
++--------+---------+------------+
+4 rows in set (0.00 sec)
+
+
+
+___________________________Q7___________________________________________________      
+
+List the customer details who not live in ‘EK’.
+
+mysql> select * from customer where city!='EK';
++----+------+-------------+-----------+--------+
+| id | name | address     | city      | ph_no  |
++----+------+-------------+-----------+--------+
+|  2 | JOHN | kallanthode | kannur    | 988873 |
+|  3 | ANNT | sdggfh      | kozhikode | 999767 |
+|  4 | ARNN | GSDFF       | EKM       |   NULL |
++----+------+-------------+-----------+--------+
+3 rows in set (0.00 sec)
+
+
+___________________________Q8___________________________________________________      
+
+List the customers who have no phone number.
+
+mysql> select * from customer where ph_no IS NULL;
++----+------+---------+------+-------+
+| id | name | address | city | ph_no |
++----+------+---------+------+-------+
+|  4 | ARNN | GSDFF   | EKM  |  NULL |
++----+------+---------+------+-------+
+1 row in set (0.00 sec)
+
+
+_________________________Q9_____________________________________________________  Display customer names in descending order
+
+
+mysql> SELECT name from customer order by name desc;
++------+
+| name |
++------+
+| JOHN |
+| ARNN |
+| APPU |
+| ANNT |
++------+
+4 rows in set (0.00 sec)
+
+
+4 rows in set (0.00 sec)
+
+
+__________________________Q10______________________________________________ 
+
+Display the customer details sorted in ascending by city and descending by names
+
+
+mysql> select* from customer order by city asc,name desc;
++----+------+-------------+-----------+--------+
+| id | name | address     | city      | ph_no  |
++----+------+-------------+-----------+--------+
+|  1 | APPU | gsdfgd      | EK        | 986767 |
+|  4 | ARNN | GSDFF       | EKM       |   NULL |
+|  2 | JOHN | kallanthode | kannur    | 988873 |
+|  3 | ANNT | sdggfh      | kozhikode | 999767 |
++----+------+-------------+-----------+--------+
+4 rows in set (0.00 sec)
+
+
+__________________________Q11__________________________________________________   
+Find the customer names start with ‘A’
+
+mysql> SELECT * FROM customer WHERE name LIKE 'A%';
++----+------+---------+-----------+--------+
+| id | name | address | city      | ph_no  |
++----+------+---------+-----------+--------+
+|  1 | APPU | gsdfgd  | EK        | 986767 |
+|  3 | ANNT | sdggfh  | kozhikode | 999767 |
+|  4 | ARNN | GSDFF   | EKM       |   NULL |
++----+------+---------+-----------+--------+
+3 rows in set (0.00 sec)
+
+
+___________________________________Q12________________________________________   
+Find the customer names who have ‘e’ or ‘a’ in them.
+
+mysql> select name from customer where name like '%J%' or name like '%N%';
++------+
+| name |
++------+
+| JOHN |
+| ANNT |
+| ARNN |
++------+
+3 rows in set (0.00 sec)
+
+
+_______________________________Q13_________________________________________   
+Find the customer names who have at least 3 characters.
+mysql> select name from customer where name like '___%';
++------+
+| name |
++------+
+| APPU |
+| JOHN |
+| ANNT |
+| ARNN |
++------+
+4 rows in set (0.00 sec)
+
+
+
+_____________________________Q14_____________________________________________   
+List the names of customers their names have ‘R’ in second position.
+mysql> select name from customer where name like '_R%';
++------+
+| name |
++------+
+| ARNN |
++------+
+1 row in set (0.00 sec)
+
+
+
+_______________________Q15_______________________________________________________
+Find the customer names start with ‘A’ and are at least 3 characters in length.
+
+mysql> select name from customer where name like 'A__%';
++------+
+| name |
++------+
+| APPU |
+| ANNT |
+| ARNN |
++------+
+3 rows in set (0.00 sec)
+
+
+
