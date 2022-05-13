@@ -1,0 +1,100 @@
+  EXPERIMENT 7          
+
+		DML- SELECT QUERY (GROUP BY, AGGREGATE FUNCTIONS)
+_____________________________Q1________________________________________________
+ 
+List product name,price except soap on price order
+
+mysql> select pname,price from product where pname!='soap' order by price;
++--------+-------+
+| pname  | price |
++--------+-------+
+| mat    |    20 |
+| tomato |    41 |
+| apple  |    41 |
+| MANGO  |   112 |
++--------+-------+
+4 rows in set (0.00 sec)
+
+
+
+____________________________	Q2_____________________________________________
+
+Find minimum, maximum and average price of products
+
+mysql> SELECT MIN(price),max(price),avg(price) FROM product;
++------------+------------+------------+
+| MIN(price) | max(price) | avg(price) |
++------------+------------+------------+
+|         20 |        112 |    53.5000 |
++------------+------------+------------+
+1 row in set (0.00 sec)
+
+_______________________________Q3____________________________________________
+
+Find number of customers in each city
+
+
+mysql> SELECT city,count(name) from customer group by city;
++-----------+-------------+
+| city      | count(name) |
++-----------+-------------+
+| EK        |           1 |
+| EKM       |           1 |
+| kannur    |           1 |
+| kozhikode |           1 |
++-----------+-------------+
+4 rows in set (0.01 sec)
+
+
+
+__________________________________Q4____________________________________________ 
+
+Find number of customers in each city, only include city with more than 3 customers
+
+
+mysql> SELECT*FROM customer;
++----+------+-------------+-----------+--------+
+| id | name | address     | city      | ph_no  |
++----+------+-------------+-----------+--------+
+|  1 | APPU | gsdfgd      | EK        | 986767 |
+|  2 | JOHN | kallanthode | kannur    | 988873 |
+|  3 | ANNT | sdggfh      | kozhikode | 999767 |
+|  4 | ARNN | GSDFF       | EKM       |   NULL |
+| 13 | APPU | gsdfgd      | EKM       | 986767 |
+| 14 | JOHN | wwwwgd      | EK        | 776767 |
+| 23 | APU  | yutyu       | EKM       | 986677 |
+| 33 | RAVI | gtyuud      | EKM       | 989666 |
++----+------+-------------+-----------+--------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT city,count(id) from customer group by city having count(name)>=3;
++------+-----------+
+| city | count(id) |
++------+-----------+
+| EKM  |         5 |
++------+-----------+
+1 row in set (0.01 sec)
+
+_______________________________Q5_______________________________________
+
+Show data as displayed ‘who, where’ Eg: ‘customer1 lives in ekm’
+
+
+mysql> select concat(name,' lives in ',city)as customer from customer;
++-------------------------+
+| customer                |
++-------------------------+
+| APPU lives in EK        |
+| JOHN lives in kannur    |
+| ANNT lives in kozhikode |
+| ARNN lives in EKM       |
+| APPU lives in EKM       |
+| JOHN lives in EK        |
+| DYAN lives in EKM       |
+| APU lives in EKM        |
+| RAVI lives in EKM       |
++-------------------------+
+9 rows in set (0.00 sec)
+
+
