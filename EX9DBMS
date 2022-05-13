@@ -1,0 +1,86 @@
+EXPERIMENT 9
+
+			JOINS
+
+________________________________Q1_______________________________________________      
+
+List the product name and quantity of invoice items
+
+mysql> select product.pname,invoice_item.quantity from product inner join invoice_item ON product.pid=invoice_item.pid;
++--------+----------+
+| pname  | quantity |
++--------+----------+
+| tomato |        2 |
+| MANGO  |        5 |
+| MANGO  |        5 |
+| apple  |       10 |
+| apple  |        5 |
+| tomato |        2 |
+| apple  |        5 |
++--------+----------+
+7 rows in set (0.02 sec)
+_______________________________Q2________________________________________________      
+
+Display invoice details of the transaction dated ’31-01-2022’
+
+
+mysql>select customer.name,product.pname,product.price,invoice_master.inv_id,
+invoice_master.inv_date,invoice_item.quantity from customer inner join invoice_master on customer.id=invoice_master.cust_id=invoice_master.cust_id inner join invoice_item on invoice_master.inv_id=invoice_item.inv_id inner join product on product.pid=invoice_item.pid where inv_date='2001-03-05';
+
+
++------+--------+-------+--------+------------+----------+
+| name | pname  | price | inv_id | inv_date   | quantity |
++------+--------+-------+--------+------------+----------+
+| APPU | MANGO  |   112 |     10 | 2001-03-05 |        5 |
+| APPU | tomato |    41 |     10 | 2001-03-05 |        2 |
++------+--------+-------+--------+------------+----------+
+2 rows in set (0.00 sec)
+
+________________________________Q3______________________________________________      
+
+Display the customer name, product name, invoice date of purchased item ‘apple’
+
+mysql> select customer.name,product.pname,invoice_master.inv_date from customer inner join invoice_master on customer.id=invoice_master.cust_id inner join invoice_item on invoice_master.inv_id=invoice_item.inv_id inner join product on product.pid=invoice_item.pid where pname='apple'; 
+
+
++------+-------+------------+
+| name | pname | inv_date   |
++------+-------+------------+
+| JOHN | apple | 2001-04-04 |
+| ANNT | apple | 2000-02-04 |
+| ANNT | apple | 2000-02-04 |
++------+-------+------------+
+3 rows in set (0.01 sec)
+
+________________________________Q4_______________________________________________      
+
+Display  all customer details and invoice details must include customer has not
+purchased items
+
+
+mysql> select customer.name,product.pname,invoice_master.inv_id,invoice_master.inv_date,invoice_item.quantity from customer left join invoice_master on customer.id=invoice_master.cust_id left join invoice_item on invoice_master.inv_id=invoice_item.inv_id left join product on product.pid=invoice_item.pid;
++------+--------+--------+------------+----------+
+| name | pname  | inv_id | inv_date   | quantity |
++------+--------+--------+------------+----------+
+| ANNT | tomato |     11 | 2000-02-04 |        2 |
+| APPU | MANGO  |     10 | 2001-03-05 |        5 |
+| JOHN | MANGO  |      1 | 2001-04-04 |        5 |
+| JOHN | apple  |      1 | 2001-04-04 |       10 |
+| ANNT | apple  |     11 | 2000-02-04 |        5 |
+| APPU | tomato |     10 | 2001-03-05 |        2 |
+| ANNT | apple  |     11 | 2000-02-04 |        5 |
+| ANNT | NULL   |     12 | 2020-02-04 |     NULL |
+| JOHN | NULL   |     13 | 2001-04-04 |     NULL |
+| ARNN | NULL   |   NULL | NULL       |     NULL |
+| APPU | NULL   |   NULL | NULL       |     NULL |
+| JOHN | NULL   |   NULL | NULL       |     NULL |
+| DYAN | NULL   |   NULL | NULL       |     NULL |
+| APU  | NULL   |   NULL | NULL       |     NULL |
+| RAVI | NULL   |   NULL | NULL       |     NULL |
++------+--------+--------+------------+----------+
+15 rows in set (0.00 sec)
+
+
+
+
+
