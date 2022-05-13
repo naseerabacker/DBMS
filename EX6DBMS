@@ -225,4 +225,4 @@ mysql> select name from customer where name like 'A__%';
 3 rows in set (0.00 sec)
 
 
-
+//VERIFIED
