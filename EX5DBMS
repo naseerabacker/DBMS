@@ -61,7 +61,7 @@ _______________________________Q4_______________________________________________
 Delete details of employees who does not have phone number
 
 mysql> delete from invoice_master where inv_id=111; //WRONG
-Query OK, 1 row affected (0.04 sec)
+
 
 mysql> delete from customer where ph_no is null; //CORRECT
 Query OK, 1 row affected (0.04 sec)
