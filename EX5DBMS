@@ -64,7 +64,7 @@ Delete details of employees who does not have phone number
 
 
 
-mysql> delete from customer where ph_no is null; //CORRECT
+mysql> delete from customer where ph_no is null;
 Query OK, 1 row affected (0.04 sec)
 
 mysql> select*from customer;
