@@ -60,7 +60,8 @@ mysql> select *from invoice_item;
 _______________________________Q4____________________________________________________
 Delete details of employees who does not have phone number
 
-mysql> delete from invoice_master where inv_id=111; //WRONG
+
+
 
 
 mysql> delete from customer where ph_no is null; //CORRECT
@@ -77,7 +78,7 @@ mysql> select*from customer;
 3 rows in set (0.00 sec)
 
 mysql> select*from invoice_item;
-+--------+------+----------+
++--------+------+----------+p
 | inv_id | pid  | quantity |
 +--------+------+----------+
 |      1 |   14 |       10 |
