@@ -60,10 +60,6 @@ mysql> select *from invoice_item;
 _______________________________Q4____________________________________________________
 Delete details of employees who does not have phone number
 
-
-
-
-
 mysql> delete from customer where ph_no is null;
 Query OK, 1 row affected (0.04 sec)
 
@@ -78,7 +74,7 @@ mysql> select*from customer;
 3 rows in set (0.00 sec)
 
 mysql> select*from invoice_item;
-+--------+------+----------+p
++--------+------+----------+
 | inv_id | pid  | quantity |
 +--------+------+----------+
 |      1 |   14 |       10 |
@@ -102,42 +98,19 @@ mysql> select*from invoice_master;
 _________________________________Q5___________________________
 Delete all records from STUDENT table
 
-mysql> delete from invoice_master where inv_id=111;
-Query OK, 1 row affected (0.04 sec)
+mysql> SELECT *FROM student;
++------+------+-----+---------+--------+
+| roll | name | age | address | gender |
++------+------+-----+---------+--------+
+|    1 | aabb |  20 | cdd     | m      |
+|    2 | SJJS |  33 | sghds   | m      |
++------+------+-----+---------+--------+
+2 rows in set (0.00 sec)
 
-mysql> delete from customer where ph_no is null;
-Query OK, 1 row affected (0.04 sec)
+mysql>delete from student;
+Query OK, 2 row affected (0.03 sec)
 
-mysql> select*from customer;
-+----+------+-------------+-----------+--------+
-| id | name | address     | city      | ph_no  |
-+----+------+-------------+-----------+--------+
-|  1 | APPU | gsdfgd      | EK        | 986767 |
-|  2 | JOHN | kallanthode | kannur    | 988873 |
-|  3 | ANNT | sdggfh      | kozhikode | 999767 |
-+----+------+-------------+-----------+--------+
-3 rows in set (0.00 sec)
-
-mysql> select*from invoice_item;
-+--------+------+----------+
-| inv_id | pid  | quantity |
-+--------+------+----------+
-|      1 |   14 |       10 |
-+--------+------+----------+
-1 row in set (0.00 sec)
-
-mysql> select*from invoice_master;
-+--------+---------+------------+
-| inv_id | cust_id | inv_date   |
-+--------+---------+------------+
-|      1 |       2 | 2001-04-04 |
-|     10 |       1 | 2001-03-05 |
-|     11 |       3 | 2000-02-04 |
-+--------+---------+------------+
-3 rows in set (0.00 sec)
-
-
-____________________________________Q6____________________________________ 
+_________________________________Q6____________________________________ 
 
 Delete Invoice details of a particular customer
 
@@ -161,7 +134,6 @@ _____________________________Q7___________________________________________
 
 Delete the first two records of 'invoice_item' table its purchase quantity is 
 high
-
 
 
 mysql> select*from invoice_master;
@@ -201,4 +173,3 @@ mysql> select*from invoice_item;
 2 rows in set (0.00 sec)
 
 
-//VERIFIED
