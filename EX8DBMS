@@ -1,0 +1,126 @@
+EXPERIMENT 8
+
+			SUBQUERY
+
+___________________________________________________________________________________
+
+
+_________________________________Q1________________________________________________
+
+List the customer names of invoice date 3rd February 2018
+
+mysql> select name from customer where id in(select inv_id from invoice_master where inv_date='2001-04-04');
++------+
+| name |
++------+
+| APPU |
+| APPU |
++------+
+2 rows in set (0.00 sec)
+
+
+_____________________________Q2____________________________________________________
+
+List the product name and price of each invoice item
+
+
+mysql> select pname,price from product where pid in(select pid from invoice_item);
++--------+-------+
+| pname  | price |
++--------+-------+
+| MANGO  |   112 |
+| tomato |    41 |
+| apple  |    41 |
++--------+-------+
+3 rows in set (0.03 sec)
+
+________________________________Q3_________________________________________________
+
+List the product names, only include their purchased quantity more than 3
+
+mysql> select pname from product where pid in(select pid from invoice_item where quantity >3);
++-------+
+| pname |
++-------+
+| MANGO |
+| apple |
++-------+
+2 rows in set (0.00 sec)
+
+
+
+
+
+_________________________________Q4_____________________________________________
+
+ Find the product that has no sale
+
+mysql> INSERT INTO product(pid,pname,price)VALUES(15,'FAN',200);                Query OK, 1 row affected (0.03 sec)
+
+mysql> select*from product;
++-----+--------+-------+
+| pid | pname  | price |
++-----+--------+-------+
+|  11 | MANGO  |   112 |
+|  12 | mat    |    20 |
+|  13 | tomato |    41 |
+|  14 | apple  |    41 |
+|  15 | FAN    |   200 |
++-----+--------+-------+
+5 rows in set (0.00 sec)
+
+
+mysql> select pname from product where pid not in(select pid from invoice_item); 
++-------+
+| pname |
++-------+
+| mat   |
+| FAN   |
++-------+
+2 rows in set (0.01 sec)
+_______________________________Q5__________________________________________________
+
+
+ List the customer names who purchased the items ‘mango’ and ‘tomato’
+
+mysql> select name from customer where id in (select cust_id from invoice_master where inv_id in(select inv_id from invoice_item where pid in(select pid from product where pname='mango'and(select pid from product where pname='tomato'))));
++------+
+| name |
++------+
+| APPU |
+| JOHN |
++------+
+2 rows in set (0.00 sec)
+
+_______________________________Q6______________________________________________
+
+Display the purchased product details of the customer ’ANNT’
+
+
+mysql> select * from product where pid in(select pid from invoice_item where inv_id in (select inv_id from invoice_master where cust_id in(select cust_id from customer where name='ANNT')));
++-----+--------+-------+
+| pid | pname  | price |
++-----+--------+-------+
+|  13 | tomato |    41 |
+|  11 | MANGO  |   112 |
+|  14 | apple  |    41 |
++-----+--------+-------+
+3 rows in set (0.00 sec)
+
+
+                                                                                                                          
+___________________________Q7______________________________________________________
+
+List the names of all customers who have purchased at least 2 products, make sure that no duplicate names in the result
+
+mysql> select name from customer where id in(select cust_id from invoice_master where inv_id in(select inv_id from invoice_item where quantity >=2));
++------+
+| name |
++------+
+| ANNT |
+| APPU |
+| JOHN |
++------+
+3 rows in set (0.01 sec)
+
+
