@@ -173,7 +173,7 @@ mysql> SELECT * FROM customer WHERE name LIKE 'A%';
 
 
 ___________________________________Q12________________________________________   
-Find the customer names who have ‘e’ or ‘a’ in them.
+Find the customer names who have ‘J’ or ‘N’ in them.
 
 mysql> select name from customer where name like '%J%' or name like '%N%';
 +------+
