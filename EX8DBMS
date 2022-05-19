@@ -123,4 +123,4 @@ mysql> select name from customer where id in(select cust_id from invoice_master 
 +------+
 3 rows in set (0.01 sec)
 
-
+//VERIFIED
