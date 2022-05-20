@@ -1,0 +1,50 @@
+EXPERIMENT 10
+
+
+			JOINS
+
+_______________________________Q1________________________________________________
+
+Create a view for customers who have purchased products
+
+mysql> create view pur_pro as select customer.* from customer inner join invoice_master on customer.id=invoice_master.cust_id;
+Query OK, 0 rows affected (0.04 sec)
+     
+
+_mysql> select* from pur_pro;
++----+------+-------------+-----------+--------+
+| id | name | address     | city      | ph_no  |
++----+------+-------------+-----------+--------+
+|  1 | APPU | gsdfgd      | EK        | 986767 |
+|  2 | JOHN | kallanthode | kannur    | 988873 |
+|  2 | JOHN | kallanthode | kannur    | 988873 |
+|  3 | ANNT | sdggfh      | kozhikode | 999767 |
+|  3 | ANNT | sdggfh      | kozhikode | 999767 |
++----+------+-------------+-----------+--------+
+5 rows in set (0.05 sec)
+
+_______________________________Q2________________________________________________      
+
+Create a view for invoice products[cname, , inv_id, product_id, quantity]
+
+
+mysql> create view inv_pro as select customer.name,invoice_master.inv_id,product.pid,invoice_item.quantity from customer inner join invoice_master on customer.id=invoice_master.cust_id inner join invoice_item on invoice_master.inv_id=invoice_item.inv_id inner join product on product.pid=invoice_item.pid;
+
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select* from inv_pro;
++------+--------+-----+----------+
+| name | inv_id | pid | quantity |
++------+--------+-----+----------+
+| ANNT |     11 |  13 |        2 |
+| APPU |     10 |  11 |        5 |
+| JOHN |      1 |  11 |        5 |
+| JOHN |      1 |  14 |       10 |
+| ANNT |     11 |  14 |        5 |
+| APPU |     10 |  13 |        2 |
+| ANNT |     11 |  14 |        5 |
++------+--------+-----+----------+
+7 rows in set (0.05 sec)
+
+mysql> 
+
