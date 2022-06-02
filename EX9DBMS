@@ -25,7 +25,7 @@ Display invoice details of the transaction dated ’31-01-2022’
 
 
 mysql>select customer.name,product.pname,product.price,invoice_master.inv_id,
-invoice_master.inv_date,invoice_item.quantity from customer inner join invoice_master on customer.id=invoice_master.cust_id=invoice_master.cust_id inner join invoice_item on invoice_master.inv_id=invoice_item.inv_id inner join product on product.pid=invoice_item.pid where inv_date='2001-03-05';
+invoice_master.inv_date,invoice_item.quantity from customer inner join invoice_master on customer.id=invoice_master.cust_id inner join invoice_item on invoice_master.inv_id=invoice_item.inv_id inner join product on product.pid=invoice_item.pid where inv_date='2001-03-05';
 
 
 +------+--------+-------+--------+------------+----------+
