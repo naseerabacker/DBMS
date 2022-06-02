@@ -7,8 +7,7 @@ ________________________________________________________________________________
 
 _________________________________Q1________________________________________________
 
-List the customer names of invoice date 3rd February 2018
-
+List the customer names of invoice date '2001-04-04'
 mysql> select name from customer where id in(select inv_id from invoice_master where inv_date='2001-04-04');
 +------+
 | name |
