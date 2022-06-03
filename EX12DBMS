@@ -1,0 +1,74 @@
+EXPERIMENT 12 
+
+
+			DCL COMMAND
+
+
+Create two users user1, user2
+___________________________________________________________________________
+mysql> CREATE USER NAS@'localhost' identified by '1234';
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> CREATE USER NASE@'localhost' identified by '1234';
+Query OK, 0 rows affected (0.00 sec)
+
+_____________________________________Q1_________________________________________
+ 
+GRANT
+Give insert and select privilege to user 1 on customer table in the invoice database.
+
+mysql> grant insert, select on stu to NAS@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show grants FOR  NAS@'localhost';
++----------------------------------------------------------+
+| Grants for NAS@localhost                                 |
++----------------------------------------------------------+
+| GRANT USAGE ON *.* TO 'NAS'@'localhost'                  |
+| GRANT SELECT, INSERT ON `www`.`stu` TO 'NAS'@'localhost' |
++----------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+
+
+
+Give update and delete privilege to user 2 on all tables in the invoice database.
+
+mysql> grant update,delete on * to NASE@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+
+mysql> show grants FOR  NASE@'localhost';
++-------------------------------------------------------+
+| Grants for NASE@localhost                             |
++-------------------------------------------------------+
+| GRANT USAGE ON *.* TO 'NASE'@'localhost'              |
+| GRANT UPDATE, DELETE ON `www`.* TO 'NASE'@'localhost' |
++-------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+_________________________________Q2_____________________________________________
+
+2.REVOKE
+Remove delete privilege of user 2
+
+mysql> REVOKE DELETE ON *FROM 'NASE'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show grants FOR  NASE@'localhost';
++-----------------------------------------------+
+| Grants for NASE@localhost                     |
++-----------------------------------------------+
+| GRANT USAGE ON *.* TO 'NASE'@'localhost'      |
+| GRANT UPDATE ON `www`.* TO 'NASE'@'localhost' |
++-----------------------------------------------+
+2 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
