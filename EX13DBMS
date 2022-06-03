@@ -1,0 +1,170 @@
+
+EXPERIMENT 13
+		
+		       TCL COMMANDS
+
+
+
+mysql> select*from stu;
++-------+------+
+| stuid | name |
++-------+------+
+|    10 | JOHN |
+|    11 | ANN  |
+|    12 | ANNA |
+|    13 | ANNA |
++-------+------+
+4 rows in set (0.00 sec)
+
+
+______________Commit_____________________________________
+
+mysql> set autocommit=off;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select*from stu;
++-------+------+
+| stuid | name |
++-------+------+
+|    10 | JOHN |
+|    11 | ANN  |
+|    12 | ANNA |
+|    13 | ANNA |
++-------+------+
+4 rows in set (0.00 sec)
+
+mysql> INSERT INTO stu VALUES(15,'mary');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO stu VALUES(16,'john');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from stu;
++-------+------+
+| stuid | name |
++-------+------+
+|    10 | JOHN |
+|    11 | ANN  |
+|    12 | ANNA |
+|    13 | ANNA |
+|    15 | mary |
+|    16 | john |
++-------+------+
+6 rows in set (0.00 sec)
+
+mysql> commit;
+Query OK, 0 rows affected (0.03 sec)
+
+______________________Rollback__________________________________________
+
+
+mysql> INSERT INTO stu VALUES(17,'kohn');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO stu VALUES(18,'tom');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from stu;
++-------+------+
+| stuid | name |
++-------+------+
+|    10 | JOHN |
+|    11 | ANN  |
+|    12 | ANNA |
+|    13 | ANNA |
+|    15 | mary |
+|    16 | john |
+|    17 | kohn |
+|    18 | tom  |
++-------+------+
+8 rows in set (0.00 sec)
+
+mysql> rollback;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select*from stu;
++-------+------+
+| stuid | name |
++-------+------+
+|    10 | JOHN |
+|    11 | ANN  |
+|    12 | ANNA |
+|    13 | ANNA |
+|    15 | mary |
+|    16 | john |
++-------+------+
+6 rows in set (0.00 sec)
+________________________Savepoint_________________________________________
+
+
+mysql> savepoint A;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> INSERT INTO stu VALUES(19,'Bom');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO stu VALUES(20,'TONY');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> savepoint B;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> INSERT INTO stu VALUES(21,'TONY');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO stu VALUES(22,'ROYY');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from stu;
++-------+------+
+| stuid | name |
++-------+------+
+|    10 | JOHN |
+|    11 | ANN  |
+|    12 | ANNA |
+|    13 | ANNA |
+|    15 | mary |
+|    16 | john |
+|    19 | Bom  |
+|    20 | TONY |
+|    21 | TONY |
+|    22 | ROYY |
++-------+------+
+10 rows in set (0.00 sec)
+
+mysql> rollback TO B;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select*from stu;
++-------+------+
+| stuid | name |
++-------+------+
+|    10 | JOHN |
+|    11 | ANN  |
+|    12 | ANNA |
+|    13 | ANNA |
+|    15 | mary |
+|    16 | john |
+|    19 | Bom  |
+|    20 | TONY |
++-------+------+
+8 rows in set (0.00 sec)
+
+mysql> rollback to A;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select*from stu;
++-------+------+
+| stuid | name |
++-------+------+
+|    10 | JOHN |
+|    11 | ANN  |
+|    12 | ANNA |
+|    13 | ANNA |
+|    15 | mary |
+|    16 | john |
++-------+------+
+6 rows in set (0.00 sec)
+
+
+
