@@ -1,0 +1,96 @@
+EXPERIMENT 11
+
+
+
+
+________________________________Q1_________________________________________
+
+Display customer_id ,city who who lives either in EK ,kozhikode(using set operation)
+
+mysql> select id,city from customer where city='kozhikode' union select id,city from customer where city='EK';
++----+-----------+
+| id | city      |
++----+-----------+
+|  3 | kozhikode |
+|  1 | EK        |
+| 14 | EK        |
++----+-----------+
+3 rows in set (0.00 sec)
+
+________________________________Q2_______________________________________________
+
+
+ Display product details with an updated price amount(new price= old price+5rs)
+
+mysql> select pid,pname,price,price+5 as 'price+5' from product;
++-----+--------+-------+---------+
+| pid | pname  | price | price+5 |
++-----+--------+-------+---------+
+|  11 | MANGO  |   112 |     117 |
+|  12 | mat    |    20 |      25 |
+|  13 | tomato |    41 |      46 |
+|  14 | apple  |    41 |      46 |
+|  15 | FAN    |   200 |     205 |
++-----+--------+-------+---------+
+5 rows in set (0.00 sec)
+
+________________________________Q3_________________________________________________    
+
+Display customer details who doesn’t have phone number and lives in ‘EKM’ city (use logical operators)
+
+mysql> select *from customer where ph_no IS NULL and city='EKM';
++----+------+---------+------+-------+
+| id | name | address | city | ph_no |
++----+------+---------+------+-------+
+|  4 | ARNN | GSDFF   | EKM  |  NULL |
+| 15 | DYAN | gsdfgd  | EKM  |  NULL |
++----+------+---------+------+-------+
+2 rows in set (0.00 sec)
+
+
+________________________________Q4____________________________________________   
+
+List the product names if it finds any records in the invoice items table has
+quantity =5(use special operators)
+
+
+mysql> select*from product;
++-----+--------+-------+
+| pid | pname  | price |
++-----+--------+-------+
+|  11 | MANGO  |   112 |
+|  12 | mat    |    20 |
+|  13 | tomato |    41 |
+|  14 | apple  |    41 |
+|  15 | FAN    |   200 |
++-----+--------+-------+
+5 rows in set (0.00 sec)
+
+
+mysql> select*from invoice_item;
++--------+------+----------+
+| inv_id | pid  | quantity |
++--------+------+----------+
+|     11 |   13 |        2 |
+|     10 |   11 |        5 |
+|      1 |   11 |        5 |
+|      1 |   14 |       10 |
+|     11 |   14 |        5 |
+|     10 |   13 |        2 |
+|     11 |   14 |        5 |
++--------+------+----------+
+7 rows in set (0.00 sec)
+
+
+
+mysql> select pname from product where pid in(select pid from invoice_item where quantity=5);
++-------+
+| pname |
++-------+
+| MANGO |
+| apple |
++-------+
+2 rows in set (0.00 sec)
+
+ 
+
