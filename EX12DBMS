@@ -65,6 +65,8 @@ mysql> show grants FOR  NASE@'localhost';
 2 rows in set (0.00 sec)
 
 
+//VERIFIED
+
 
 
 
