@@ -1,0 +1,138 @@
+EXPERIMENT 16
+
+
+		PL/SQL PROGRAMS – TRIGGERS
+
+
+_____________________________________Q1_____________________________________      
+
+Create a trigger to handle updates to the customer table.
+
+mysql> SELECT * FROM customer;
++----+------+-------------+-----------+--------+
+| id | name | address     | city      | ph_no  |
++----+------+-------------+-----------+--------+
+|  1 | APPU | gsdfgd      | EK        | 986767 |
+|  2 | JOHN | kallanthode | kannur    | 988873 |
+|  3 | ANNT | sdggfh      | kozhikode | 999767 |
+|  4 | ARNN | GSDFF       | EKM       |   NULL |
+| 13 | APPU | gsdfgd      | EKM       | 986767 |
+| 14 | JOHN | wwwwgd      | EK        | 776767 |
+| 15 | DYAN | gsdfgd      | EKM       |   NULL |
+| 23 | APU  | yutyu       | EKM       | 986677 |
+| 33 | RAVI | gtyuud      | EKM       | 989666 |
++----+------+-------------+-----------+--------+
+9 rows in set (0.00 sec)
+
+
+mysql> delimiter //
+mysql> create trigger backup
+    -> before update
+    -> on customer
+    -> for each row 
+    -> begin
+    -> insert into customer_backup
+    -> values(old.id,old.name,old.address,old.city,old.ph_no);
+    -> end //
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> delimiter ;
+mysql> create table customer_backup(id int,name varchar(20),address varchar(30),city varchar(20),ph_no int);
+Query OK, 0 rows affected (0.18 sec)
+
+mysql> SELECT * FROM customer;
++----+------+-------------+-----------+--------+
+| id | name | address     | city      | ph_no  |
++----+------+-------------+-----------+--------+
+|  1 | APPU | gsdfgd      | EK        | 986767 |
+|  2 | JOHN | kallanthode | kannur    | 988873 |
+|  3 | ANNT | sdggfh      | kozhikode | 999767 |
+|  4 | ARNN | GSDFF       | EKM       |   NULL |
+| 13 | APPU | gsdfgd      | EKM       | 986767 |
+| 14 | JOHN | wwwwgd      | EK        | 776767 |
+| 15 | DYAN | gsdfgd      | EKM       |   NULL |
+| 23 | APU  | yutyu       | EKM       | 986677 |
+| 33 | RAVI | gtyuud      | EKM       | 989666 |
++----+------+-------------+-----------+--------+
+9 rows in set (0.01 sec)
+
+
+
+mysql> update customer set name='aaaa' where id='14';
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM customer_backup;
++------+------+---------+------+--------+
+| id   | name | address | city | ph_no  |
++------+------+---------+------+--------+
+|   14 | JOHN | wwwwgd  | EK   | 776767 |
++------+------+---------+------+--------+
+1 row in set (0.00 sec)
+
+mysql> SELECT * FROM customer;
++----+------+-------------+-----------+--------+
+| id | name | address     | city      | ph_no  |
++----+------+-------------+-----------+--------+
+|  1 | APPU | gsdfgd      | EK        | 986767 |
+|  2 | JOHN | kallanthode | kannur    | 988873 |
+|  3 | ANNT | sdggfh      | kozhikode | 999767 |
+|  4 | ARNN | GSDFF       | EKM       |   NULL |
+| 13 | APPU | gsdfgd      | EKM       | 986767 |
+| 14 | aaaa | wwwwgd      | EK        | 776767 |
+| 15 | DYAN | gsdfgd      | EKM       |   NULL |
+| 23 | APU  | yutyu       | EKM       | 986677 |
+| 33 | RAVI | gtyuud      | EKM       | 989666 |
++----+------+-------------+-----------+--------+
+9 rows in set (0.00 sec)
+
+
+_________________________Q2__________________________________________
+
+Create a trigger to handle inserts to the product relation ( if price < 50 the set
+price to 90)
+
+
+mysql> SELECT * FROM product;
++-----+--------+-------+
+| pid | pname  | price |
++-----+--------+-------+
+|  11 | MANGO  |   112 |
+|  12 | mat    |    20 |
+|  13 | tomato |    41 |
+|  14 | apple  |    41 |
+|  15 | FAN    |   200 |
++-----+--------+-------+
+5 rows in set (0.00 sec)
+
+mysql> delimiter //
+mysql> create trigger prodt_price
+    -> before insert
+    -> on product
+    -> for each row 
+    -> begin
+    -> if new.price < 50 then
+    -> set new.price=90;
+    -> end if;
+    -> end//
+Query OK, 0 rows affected (0.06 sec)
+
+
+mysql> delimiter ;
+mysql> insert into product values(16,'phone',40);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select* from product;
++-----+--------+-------+
+| pid | pname  | price |
++-----+--------+-------+
+|  11 | MANGO  |   112 |
+|  12 | mat    |    20 |
+|  13 | tomato |    41 |
+|  14 | apple  |    41 |
+|  15 | FAN    |   200 |
+|  16 | phone  |    90 |
++-----+--------+-------+
+6 rows in set (0.00 sec)
+
+
