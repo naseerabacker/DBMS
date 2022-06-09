@@ -43,5 +43,5 @@ mysql> select pname,price,price_rang(price) from product order by price;
 
 
 
-
+//VERIFIED
 
