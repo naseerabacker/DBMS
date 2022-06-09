@@ -1,0 +1,47 @@
+
+17 PL/SQL PROGRAMS – CURSOR
+
+
+1.     
+Write
+a PL/SQL program to create a name list of customers using CURSOR
+
+mysql> DELIMITER $$
+mysql> CREATE PROCEDURE list_name (INOUT name_list varchar(4000))
+    -> 
+    -> BEGIN
+    -> DECLARE is_done INTEGER DEFAULT 0;
+    -> DECLARE s_name varchar(100) DEFAULT "";
+    -> DECLARE stud_cursor CURSOR FOR
+    -> SELECT name FROM customer;
+    -> DECLARE CONTINUE HANDLER FOR NOT FOUND SET is_done = 1;
+    -> OPEN stud_cursor;
+    -> get_list: LOOP
+    -> FETCH stud_cursor INTO s_name;
+    -> IF is_done = 1 THEN
+    -> LEAVE get_list;
+    -> END IF;
+    -> SET name_list = CONCAT(s_name, ";",name_list);
+    -> END LOOP get_list;
+    -> CLOSE stud_cursor;
+    -> END$$
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> SET @name_list ="";//
+    -> $$
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SET @name_list ="";$$
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call list_name(@name_list)$$
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> select @name_list;$$
++----------------------------------------------+
+| @name_list                                   |
++----------------------------------------------+
+| RAVI;APU;DYAN;aaaa;APPU;ARNN;ANNT;JOHN;APPU; |
++----------------------------------------------+
+1 row in set (0.00 sec)
+
