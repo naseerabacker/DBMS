@@ -1,0 +1,119 @@
+EXPERIMENT 14 
+		
+		PL/SQL PROGRAMS- STORED PROCEDURES
+
+
+___________________________Q1____________________________________      
+
+Create a procedure to display all tables in the invoice database.
+
+CREATE PROCEDURE cus AS select * from customer
+GO;
+
+mysql>  DELIMITER &&
+mysql> CREATE PROCEDURE a()
+    -> BEGIN
+    -> show tables;
+    -> END &&;
+Query OK, 0 rows affected (0.07 sec)
+
+mysql>  call a()&&
++-------------------+
+| Tables_in_invoice |
++-------------------+
+| customer          |
+| inv_pro           |
+| invoice_item      |
+| invoice_master    |
+| product           |
+| pur_pro           |
++-------------------+
+6 rows in set (0.02 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+
+___________________________Q2____________________________________ 
+
+Create a procedure to find greatest of 3 numbers.
+
+mysql> delimiter //
+mysql> create procedure greatest ( a int,b int,c int)
+    -> begin
+    -> if (a>b) and (a>c) then
+    -> select a as 'Greatest';
+    -> elseif (b>a) and (b>c) then
+    -> select b as 'Greatest';
+    -> else
+    -> select c as 'Grertest';
+    -> end if;
+    -> end //
+Query OK, 0 rows affected (0.00 sec)
+
+
+
+mysql> create procedure greates ( a int,b int,c int)
+    -> begin
+    -> if (a>b) and (a>c) then
+    -> select a as 'Greatest';
+    -> elseif (b>a) and (b>c) then
+    -> select b as 'Greatest';
+    -> else
+    -> select c as 'Greatest';                                                                                                                    -> end if;                                                                                                                                    -> end//
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call greatest(6,4,7)//
++----------+
+| Grertest |
++----------+
+|        7 |
++----------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call greatest(6,4,7)//
++----------+
+| Grertest |
++----------+
+|        7 |
++----------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+
+
+
+
+___________________________Q3____________________________________ 
+      
+Create a procedure to display invoice details of a particular customer.
+
+
+mysql> delimiter //
+mysql> create procedure inv_detaily (a varchar(10))
+    -> select inv_id,inv_date,price,quantity from customer
+    -> natural join invoice_master
+    ->  natural join invoice_item    -> natural join product                                                                                                                       ->  where name=a;                                                                                                                             ->  end //                                                                                                                                Query OK, 0 rows affected (0.00 sec)
+
+
+mysql> call inv_detaily('ANNT')
+    -> //
++--------+------------+-------+----------+
+| inv_id | inv_date   | price | quantity |
++--------+------------+-------+----------+
+|     11 | 2000-02-04 |    41 |        2 |
+|     10 | 2001-03-05 |   112 |        5 |
+|      1 | 2001-04-04 |   112 |        5 |
+|      1 | 2001-04-04 |    41 |       10 |
+|     11 | 2000-02-04 |    41 |        5 |
+|     10 | 2001-03-05 |    41 |        2 |
+|     11 | 2000-02-04 |    41 |        5 |
++--------+------------+-------+----------+
+7 rows in set (0.12 sec)
+
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> 
+
