@@ -46,7 +46,7 @@ mysql> create procedure greatest( a int,b int,c int)
     -> select b as 'Greatest';
     -> else
     -> select c as 'Greatest';                                                                                                                   
-    -> end if;                                                                                                                                    -> end//
+    -> end if;                                                                                                                                    
 Query OK, 0 rows affected (0.00 sec)
 
 mysql> call greatest(6,4,7)//
