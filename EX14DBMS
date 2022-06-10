@@ -38,21 +38,7 @@ ___________________________Q2____________________________________
 Create a procedure to find greatest of 3 numbers.
 
 mysql> delimiter //
-mysql> create procedure greatest ( a int,b int,c int)
-    -> begin
-    -> if (a>b) and (a>c) then
-    -> select a as 'Greatest';
-    -> elseif (b>a) and (b>c) then
-    -> select b as 'Greatest';
-    -> else
-    -> select c as 'Grertest';
-    -> end if;
-    -> end //
-Query OK, 0 rows affected (0.00 sec)
-
-
-
-mysql> create procedure greates ( a int,b int,c int)
+mysql> create procedure greatest( a int,b int,c int)
     -> begin
     -> if (a>b) and (a>c) then
     -> select a as 'Greatest';
