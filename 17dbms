@@ -1,10 +1,11 @@
 
-17 PL/SQL PROGRAMS – CURSOR
+EXPERIMENT 17 
+            PL/SQL PROGRAMS – CURSOR
 
 
-1.     
-Write
-a PL/SQL program to create a name list of customers using CURSOR
+
+______________________________  Q1 ____________________________________________________    
+Write a PL/SQL program to create a name list of customers using CURSOR
 
 mysql> DELIMITER $$
 mysql> CREATE PROCEDURE list_name (INOUT name_list varchar(4000))
