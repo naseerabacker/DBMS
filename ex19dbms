@@ -1,0 +1,47 @@
+19 
+
+  
+		NoSQL– RETRIEVING DATA
+
+
+__________________________Q1_____________________________________________________    
+
+ Write a MongoDB query to display the customer documents having city ‘ekm’,’tvm’.
+
+
+> db.customer.find({$or:[{"address":"ekm"},{"address": "tvm"}]}).pretty()
+{
+	"_id" : ObjectId("62a30d34acdd30a16dfc8596"),
+	"id" : "2",
+	"name" : "aneeta",
+	"address" : "ekm",
+	"pn_no" : "9898",
+	"age" : "25"
+}
+{
+	"_id" : ObjectId("62a30d5aacdd30a16dfc8597"),
+	"id" : "1",
+	"name" : "kavya",
+	"address" : "tvm",
+	"pn_no" : "8898",
+	"age" : "25"
+}
+
+
+___________________________________Q2___________________________________________     
+
+
+Write a MongoDB query to display all customer documents who have age >50.
+
+
+> db.customer.find({"age":{$gt:"50"}}).pretty()
+{
+	"_id" : ObjectId("62a31905ae403a32220be9d4"),
+	"id" : "3",
+	"name" : "john",
+	"address" : "calicut",
+	"pn_no" : "9998",
+	"age" : "60"
+}
+
+
