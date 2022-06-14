@@ -1,0 +1,78 @@
+21
+
+
+		NoSQL – ADMINISTRATION
+
+
+________________________________1______________________________________________
+
+ Write  a MongoDB query to create a user “CUSTOMER1” and grant the read role in the
+INVOICE database.
+
+> db.createUser({user:"nas",pwd:"abcd",roles:[{role:"read",db:"INVOICE"}]})
+Successfully added user: {
+	"user" : "nas",
+	"roles" : [
+		{
+			"role" : "read",
+			"db" : "INVOICE"
+		}
+	]
+}
+
+
+
+
+_________________________________2________________________________________    
+ 
+ Write a MongoDB query to create the backup for the INVOICE database.
+
+2)ksb@ksb:~$ sudo mkdir /var/backups/mongobackups
+[sudo] password for ksb:
+ksb@ksb:~$ sudo mongodump --db INVOICE --out /var/backups/mongobackups
+2022-06-14T11:58:42.418+0530    writing INVOICE.product to /var/backups/mongobackups/INVOICE/product.bson
+2022-06-14T11:58:42.419+0530    done dumping INVOICE.product (20 documents)
+2022-06-14T11:58:42.423+0530    writing INVOICE.customer to /var/backups/mongobackups/INVOICE/customer.bson
+2022-06-14T11:58:42.423+0530    done dumping INVOICE.customer (6 documents)
+
+ksb@ksb:/var/backups/mongobackups$ ls -l
+total 4
+drwxr-xr-x 2 root root 4096 Jun 14 11:58 INVOICE
+
+ksb@ksb:/var/backups/mongobackups$ cd /var/backups/mongobackups/INVOICE
+ksb@ksb:/var/backups/mongobackups/INVOICE$ ls -l
+total 16
+-rw-r--r-- 1 root root  517 Jun 14 11:58 customer.bson
+-rw-r--r-- 1 root root  175 Jun 14 11:58 customer.metadata.json
+-rw-r--r-- 1 root root 1044 Jun 14 11:58 product.bson
+-rw-r--r-- 1 root root  174 Jun 14 11:58 product.metadata.json
+
+
+
+
+_______________________________3______________________________________________  
+   
+ Write a MongoDB query to restore a particular database or a collection.
+
+> use INVOICE
+switched to db INVOICE
+
+
+> db.dropDatabase()
+{ "dropped" : "INVOICE", "ok" : 1 }
+
+
+ksb@ksb-ThinkCentre-Edge72:~$ mongo
+MongoDB shell version v3.6.3
+
+
+
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+tablee  0.000GB
+> 
+
+
+
