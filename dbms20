@@ -1,0 +1,78 @@
+20
+
+
+	   NoSQL – AGGREGATE FUNCTIONS AND REGULAR EXPRESSIONS
+
+
+____________________________1_____________________________________________     
+
+ Write a MongoDB query to sort customer details in ascending order of their name.
+
+> db.customer.find().sort({name:1}).pretty()
+{
+	"_id" : ObjectId("62a821a118ce006153882222"),
+	"id" : 2,
+	"name" : "aneeta",
+	"address" : "ekm",
+	"pn_no" : 9898,
+	"age" : 25
+}
+{
+	"_id" : ObjectId("62a8292918ce00615388222c"),
+	"id" : 4,
+	"name" : "awan",
+	"address" : "calicut",
+	"pn_no" : 7798,
+	"age" : 10
+}
+{
+	"_id" : ObjectId("62a821b218ce006153882223"),
+	"id" : 1,
+	"name" : "kavya",
+	"address" : "tvm",
+	"pn_no" : 8898,
+	"age" : 25
+}
+{
+	"_id" : ObjectId("62a821ea18ce006153882226"),
+	"id" : 5,
+	"name" : "reem",
+	"address" : "calicut",
+	"pn_no" : 7798,
+	"age" : 10
+}
+{
+	"_id" : ObjectId("62a821f618ce006153882227"),
+	"id" : 6,
+	"name" : "reet",
+	"address" : "malappuram",
+	"pn_no" : 7798,
+	"age" : 10
+}
+> 
+
+____________________________________2____________________________________   
+  
+Write a MongoDB query to count number of customers in each city.
+
+> db.customer.aggregate([{$group:{_id:"$address",total:{$sum:1}}}])
+{ "_id" : "malappuram", "total" : 1 }
+{ "_id" : "tvm", "total" : 1 }
+{ "_id" : "calicut", "total" : 2 }
+{ "_id" : "ekm", "total" : 1 }
+
+
+
+
+_________________________________ 3______________________________________  
+
+ Write a MongoDB query to find minimum and maximum age in each city.
+
+
+> db.customer.aggregate([{$group:{_id:"$address",max:{$max:"$age"},min:{$min:"$age"}}}])
+{ "_id" : "malappuram", "max" : 10, "min" : 10 }
+{ "_id" : "tvm", "max" : 25, "min" : 25 }
+{ "_id" : "calicut", "max" : 10, "min" : 10 }
+{ "_id" : "ekm", "max" : 25, "min" : 25 }
+
+
