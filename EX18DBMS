@@ -17,114 +17,122 @@ switched to db INVOICE
 { "ok" : 1 }
 
 
-** db.customer.insert({"id":"2","name":"aneeta","address":"ekm","pn_no":"9898","age":"25"})
-WriteResult({ "nInserted" : 1 })
-> db.customer.insert({"id":"1","name":"kavya","address":"tvm","pn_no":"8898","age":"25"})
-WriteResult({ "nInserted" : 1 })
-> db.customer.insert({"id":"3","name":"john","address":"calicut","pn_no":"9998","age":"60"})
-WriteResult({ "nInserted" : 1 })
-> db.customer.insert({"id":"4","name":"awan","address":"calicut","pn_no":"7798","age":"10"})
-WriteResult({ "nInserted" : 1 })
-> db.customer.insert({"id":"5","name":"reem","address":"calicut","pn_no":"7798","age":"10"})
+** 
+> db.customer.insert({id:2,name:"aneeta",address:"ekm",pn_no:9898,age:25})
 WriteResult({ "nInserted" : 1 })
 > 
-> db.customer.insert({"id":"6","name":"reet","address":"kannur","pn_no":"7798","age":"10"})
+> db.customer.insert({id:1,name:"kavya",address:"tvm",pn_no:8898,age:25})
 WriteResult({ "nInserted" : 1 })
+
+
+> db.customer.insert({id:3,name:"john",address:"calicut",pn_no:9998,age:60})
+WriteResult({ "nInserted" : 1 })
+> 
+> db.customer.insert({id:4,name:"awan",address:"calicut",pn_no:7798,age:10})
+WriteResult({ "nInserted" : 1 })
+> 
+> 
+> db.customer.insert({id:5,name:"reem",address:"calicut",pn_no:7798,age:10})
+WriteResult({ "nInserted" : 1 })
+> 
+> 
+> db.customer.insert({id:6,name:"reet",address:"kannur",pn_no:7798,age:10})
+WriteResult({ "nInserted" : 1 })
+> 
 
 
 **
 
-> db.product.insert({"pname":"mango","price":"40"})
+> db.product.insert({pname:"mango",price:40})
 WriteResult({ "nInserted" : 1 })
-> db.product.insert({"pname":"mat","price":"50"})
+> db.product.insert({pname:"mat",price:50})
 WriteResult({ "nInserted" : 1 })
-> db.product.insert({"pname":"dress","price":"100"})
+> db.product.insert({pname:"dress",price:100})
 WriteResult({ "nInserted" : 1 })
-> db.product.insert({"pname":"pencil","price":"75"})
+> db.product.insert({pname:"pencil",price:75})
 WriteResult({ "nInserted" : 1 })
+
 
 **
-
 > db.product.find().pretty();
 {
-	"_id" : ObjectId("62a30e47acdd30a16dfc859b"),
+	"_id" : ObjectId("62a8220e18ce006153882228"),
 	"pname" : "mango",
-	"price" : "40"
+	"price" : 40
 }
 {
-	"_id" : ObjectId("62a30e56acdd30a16dfc859c"),
+	"_id" : ObjectId("62a8221618ce006153882229"),
 	"pname" : "mat",
-	"price" : "50"
+	"price" : 50
 }
 {
-	"_id" : ObjectId("62a30e67acdd30a16dfc859d"),
+	"_id" : ObjectId("62a8222018ce00615388222a"),
 	"pname" : "dress",
-	"price" : "100"
+	"price" : 100
 }
 {
-	"_id" : ObjectId("62a30e8cacdd30a16dfc859e"),
+	"_id" : ObjectId("62a8222a18ce00615388222b"),
 	"pname" : "pencil",
-	"price" : "75"
+	"price" : 75
 }
+> 
 
 
 
 _______________________________Q2__________________________________________ 
 
- Write a MongoDB query to find all documents from the collection CUSTOMER
+ Write a MongoDB query to find all documents from the collection 'customer'
 
 > db.customer.find().pretty();
 {
-	"_id" : ObjectId("62a30d34acdd30a16dfc8596"),
-	"id" : "2",
+	"_id" : ObjectId("62a821a118ce006153882222"),
+	"id" : 2,
 	"name" : "aneeta",
 	"address" : "ekm",
-	"pn_no" : "9898",
-	"age" : "25"
+	"pn_no" : 9898,
+	"age" : 25
 }
 {
-	"_id" : ObjectId("62a30d5aacdd30a16dfc8597"),
-	"id" : "1",
+	"_id" : ObjectId("62a821b218ce006153882223"),
+	"id" : 1,
 	"name" : "kavya",
 	"address" : "tvm",
-	"pn_no" : "8898",
-	"age" : "25"
+	"pn_no" : 8898,
+	"age" : 25
 }
 {
-	"_id" : ObjectId("62a30d7eacdd30a16dfc8598"),
-	"id" : "3",
+	"_id" : ObjectId("62a821be18ce006153882224"),
+	"id" : 3,
 	"name" : "john",
 	"address" : "calicut",
-	"pn_no" : "9998",
-	"age" : "60"
+	"pn_no" : 9998,
+	"age" : 60
 }
 {
-	"_id" : ObjectId("62a30d97acdd30a16dfc8599"),
-	"id" : "4",
+	"_id" : ObjectId("62a821ce18ce006153882225"),
+	"id" : 4,
 	"name" : "awan",
 	"address" : "calicut",
-	"pn_no" : "7798",
-	"age" : "10"
+	"pn_no" : 7798,
+	"age" : 10
 }
 {
-	"_id" : ObjectId("62a30de8acdd30a16dfc859a"),
-	"id" : "5",
+	"_id" : ObjectId("62a821ea18ce006153882226"),
+	"id" : 5,
 	"name" : "reem",
 	"address" : "calicut",
-	"pn_no" : "7798",
-	"age" : "10"
+	"pn_no" : 7798,
+	"age" : 10
 }
-
 {
-	"_id" : ObjectId("62a31086acdd30a16dfc859f"),
-	"id" : "6",
+	"_id" : ObjectId("62a821f618ce006153882227"),
+	"id" : 6,
 	"name" : "reet",
 	"address" : "kannur",
-	"pn_no" : "7798",
-	"age" : "10"
+	"pn_no" : 7798,
+	"age" : 10
 }
-
-
+> 
 
 
 
@@ -137,52 +145,52 @@ _________________________________Q3_____________________________________________
 WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
 > db.customer.find().pretty();
 {
-	"_id" : ObjectId("62a30d34acdd30a16dfc8596"),
-	"id" : "2",
+	"_id" : ObjectId("62a821a118ce006153882222"),
+	"id" : 2,
 	"name" : "aneeta",
 	"address" : "ekm",
-	"pn_no" : "9898",
-	"age" : "25"
+	"pn_no" : 9898,
+	"age" : 25
 }
 {
-	"_id" : ObjectId("62a30d5aacdd30a16dfc8597"),
-	"id" : "1",
+	"_id" : ObjectId("62a821b218ce006153882223"),
+	"id" : 1,
 	"name" : "kavya",
 	"address" : "tvm",
-	"pn_no" : "8898",
-	"age" : "25"
+	"pn_no" : 8898,
+	"age" : 25
 }
 {
-	"_id" : ObjectId("62a30d7eacdd30a16dfc8598"),
-	"id" : "3",
+	"_id" : ObjectId("62a821be18ce006153882224"),
+	"id" : 3,
 	"name" : "john",
 	"address" : "calicut",
-	"pn_no" : "9998",
-	"age" : "60"
+	"pn_no" : 9998,
+	"age" : 60
 }
 {
-	"_id" : ObjectId("62a30d97acdd30a16dfc8599"),
-	"id" : "4",
+	"_id" : ObjectId("62a821ce18ce006153882225"),
+	"id" : 4,
 	"name" : "awan",
 	"address" : "calicut",
-	"pn_no" : "7798",
-	"age" : "10"
+	"pn_no" : 7798,
+	"age" : 10
 }
 {
-	"_id" : ObjectId("62a30de8acdd30a16dfc859a"),
-	"id" : "5",
+	"_id" : ObjectId("62a821ea18ce006153882226"),
+	"id" : 5,
 	"name" : "reem",
 	"address" : "calicut",
-	"pn_no" : "7798",
-	"age" : "10"
+	"pn_no" : 7798,
+	"age" : 10
 }
 {
-	"_id" : ObjectId("62a31086acdd30a16dfc859f"),
-	"id" : "6",
+	"_id" : ObjectId("62a821f618ce006153882227"),
+	"id" : 6,
 	"name" : "reet",
 	"address" : "malappuram",
-	"pn_no" : "7798",
-	"age" : "10"
+	"pn_no" : 7798,
+	"age" : 10
 }
 > 
 
@@ -192,48 +200,48 @@ ______________________________Q4____________________________________
 
 
 
-> db.customer.deleteOne({"address":"calicut"})
+> db.customer.deleteOne({address:"calicut"})
 { "acknowledged" : true, "deletedCount" : 1 }
 > db.customer.find().pretty();
 {
-	"_id" : ObjectId("62a30d34acdd30a16dfc8596"),
-	"id" : "2",
+	"_id" : ObjectId("62a821a118ce006153882222"),
+	"id" : 2,
 	"name" : "aneeta",
 	"address" : "ekm",
-	"pn_no" : "9898",
-	"age" : "25"
+	"pn_no" : 9898,
+	"age" : 25
 }
 {
-	"_id" : ObjectId("62a30d5aacdd30a16dfc8597"),
-	"id" : "1",
+	"_id" : ObjectId("62a821b218ce006153882223"),
+	"id" : 1,
 	"name" : "kavya",
 	"address" : "tvm",
-	"pn_no" : "8898",
-	"age" : "25"
+	"pn_no" : 8898,
+	"age" : 25
 }
 {
-	"_id" : ObjectId("62a30d97acdd30a16dfc8599"),
-	"id" : "4",
+	"_id" : ObjectId("62a821ce18ce006153882225"),
+	"id" : 4,
 	"name" : "awan",
 	"address" : "calicut",
-	"pn_no" : "7798",
-	"age" : "10"
+	"pn_no" : 7798,
+	"age" : 10
 }
 {
-	"_id" : ObjectId("62a30de8acdd30a16dfc859a"),
-	"id" : "5",
+	"_id" : ObjectId("62a821ea18ce006153882226"),
+	"id" : 5,
 	"name" : "reem",
 	"address" : "calicut",
-	"pn_no" : "7798",
-	"age" : "10"
+	"pn_no" : 7798,
+	"age" : 10
 }
 {
-	"_id" : ObjectId("62a31086acdd30a16dfc859f"),
-	"id" : "6",
+	"_id" : ObjectId("62a821f618ce006153882227"),
+	"id" : 6,
 	"name" : "reet",
 	"address" : "malappuram",
-	"pn_no" : "7798",
-	"age" : "10"
+	"pn_no" : 7798,
+	"age" : 10
 }
 > 
 
