@@ -1,0 +1,86 @@
+21
+
+
+		NoSQL – ADMINISTRATION
+
+
+________________________________1______________________________________________
+
+ Write  a MongoDB query to create a user “CUSTOMER1” and grant the read role in the
+INVOICE database.
+
+>  db.createUser({user:"nasra",pwd:"abcd",roles:[{role:"read",db:"INVOICE"}]})
+Successfully added user: {
+	"user" : "nasra",
+	"roles" : [
+		{
+			"role" : "read",
+			"db" : "INVOICE"
+		}
+	]
+}
+> 
+
+
+_________________________________2________________________________________    
+ 
+ Write a MongoDB query to create the backup for the INVOICE database.
+ksb@ksb-ThinkCentre-Edge72:~$ sudo mkdir /var/backups/mongobackups
+[sudo] password for ksb:
+
+ksb@ksb-ThinkCentre-Edge72:~$  sudo mongodump --db INVOICE --out /var/backups/mongobackups
+2022-06-15T14:34:49.951+0530	writing INVOICE.customer to 
+2022-06-15T14:34:49.952+0530	writing INVOICE.product to 
+2022-06-15T14:34:49.952+0530	done dumping INVOICE.product (4 documents)
+2022-06-15T14:34:49.952+0530	done dumping INVOICE.customer (5 documents)
+
+ksb@ksb-ThinkCentre-Edge72:/var/backups/mongobackups$ ls -l
+total 4
+drwxr-xr-x 2 root root 4096 Jun 15 14:34 INVOICE
+
+
+ksb@ksb-ThinkCentre-Edge72:~$ cd /var/backups/mongobackups/INVOICE
+ksb@ksb-ThinkCentre-Edge72:/var/backups/mongobackups/INVOICE$ ls -l
+total 16
+-rw-r--r-- 1 root root 488 Jun 15 14:34 customer.bson
+-rw-r--r-- 1 root root 130 Jun 15 14:34 customer.metadata.json
+-rw-r--r-- 1 root root 215 Jun 15 14:34 product.bson
+-rw-r--r-- 1 root root 129 Jun 15 14:34 product.metadata.json
+
+
+_________________________________3______________________________________________  
+   
+ Write a MongoDB query to restore a particular database or a collection.
+
+
+ksb@ksb-ThinkCentre-Edge72:/var/backups/mongobackups/INVOICE$ mongo
+
+> use INVOICE
+switched to db INVOICE
+> db.dropDatabase()
+{ "dropped" : "INVOICE", "ok" : 1 }
+> 
+
+ksb@ksb-ThinkCentre-Edge72:/var/backups/mongobackups/INVOICE$ sudo mongorestore /var/backups/mongobackups
+2022-06-15T14:40:15.328+0530	preparing collections to restore from
+2022-06-15T14:40:15.330+0530	reading metadata for INVOICE.customer from /var/backups/mongobackups/INVOICE/customer.metadata.json
+2022-06-15T14:40:15.330+0530	reading metadata for INVOICE.product from /var/backups/mongobackups/INVOICE/product.metadata.json
+2022-06-15T14:40:15.505+0530	restoring INVOICE.product from /var/backups/mongobackups/INVOICE/product.bson
+2022-06-15T14:40:15.641+0530	restoring INVOICE.customer from /var/backups/mongobackups/INVOICE/customer.bson
+2022-06-15T14:40:15.641+0530	no indexes to restore
+2022-06-15T14:40:15.652+0530	finished restoring INVOICE.product (4 documents)
+2022-06-15T14:40:15.653+0530	no indexes to restore
+2022-06-15T14:40:15.653+0530	finished restoring INVOICE.customer (5 documents)
+2022-06-15T14:40:15.654+0530	done
+
+
+ksb@ksb-ThinkCentre-Edge72:/var/backups/mongobackups/INVOICE$ mongo
+
+> show dbs
+INVOICE  0.000GB
+admin    0.000GB
+config   0.000GB
+local    0.000GB
+tablee   0.000GB
+
+
