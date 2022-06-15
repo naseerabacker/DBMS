@@ -24,7 +24,8 @@ Successfully added user: {
 
 _________________________________2________________________________________    
  
- Write a MongoDB query to create the backup for the INVOICE database.
+Write a MongoDB query to create the backup for the INVOICE database.
+ 
 ksb@ksb-ThinkCentre-Edge72:~$ sudo mkdir /var/backups/mongobackups
 [sudo] password for ksb:
 
